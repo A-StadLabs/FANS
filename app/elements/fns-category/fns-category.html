@@ -8,19 +8,15 @@
   <template>
     <link rel="stylesheet" href="fns-category.css">
     <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" log location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games"></firebase-element>
-    <core-icon-button icon="add" on-tap="{{toggleNewgame}}">New game</core-icon-button>
-    <core-icon-button icon="menu">Rankings</core-icon-button>
-    <h2>Laatste games</h2>
+      <div vertical layout center class="btns">
+
+    <core-icon-button on-tap="{{toggleNewgame}}">New game</core-icon-button>
+    <core-icon-button>Rankings</core-icon-button>
+    <h3>Laatste games</h3>
     <fns-newgame cat="{{cat}}" hidden?="{{newgame}}" id="newgame"></fns-newgame>
     <template repeat="{{key in keys}}" id="gamestemplate">
      <fns-gameitem gamedata="{{data[key]}}"></fns-gameitem>
     </template>
-  <div vertical layout center>
-    <div class="btns">
-    <core-icon-button class="new-btn">New game</core-icon-button>
-    <core-icon-button class="rankings-btn">Rankings</core-icon-button>
-    </div>
-    <h2>Laatste games</h2>
   </div>
     
   </template>
