@@ -4,9 +4,13 @@
 <polymer-element name="fns-category" attributes="cat">
   <template>
     <link rel="stylesheet" href="fns-category.css">
-    <core-icon-button icon="add">New game</core-icon-button>
-    <core-icon-button icon="menu">Rankings</core-icon-button>
+  <div vertical layout center>
+    <div class="btns">
+    <core-icon-button class="new-btn">New game</core-icon-button>
+    <core-icon-button class="rankings-btn">Rankings</core-icon-button>
+    </div>
     <h2>Laatste games</h2>
+  </div>
     
   </template>
   <script>
