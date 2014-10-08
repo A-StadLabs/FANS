@@ -4,7 +4,8 @@
 <polymer-element name="fns-catitem" attributes="icon naam">
   <template>
     <link rel="stylesheet" href="fns-catitem.css">
-    <core-icon-button icon="{{icon}}">{{naam}}</core-icon-button>
+    <a is="pushstate-anchor" href="/#/category/{{naam}}">
+    <core-icon-button icon="{{icon}}" on-tap="{{catTapped}}">{{naam}}</core-icon-button></a>
   </template>
   <script>
     (function () {
@@ -12,6 +13,9 @@
 
       Polymer({
         // define element prototype here
+        catTapped: function(e, detail, sender){
+          this.fire('tapped', { msg: this.naam });
+        }
       });
 
     })();
