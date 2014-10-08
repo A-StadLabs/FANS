@@ -1,9 +1,12 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../elements/fns-catitem/fns-catitem.html">
 
-<polymer-element name="fns-categories" attributes="">
+<polymer-element name="fns-categories" attributes="categories">
   <template>
     <link rel="stylesheet" href="fns-categories.css">
-    <h1>CATEGORIES</h1>
+    <template repeat="{{cat in categories}}" id="cattemplate">
+      <fns-catitem icon="{{cat.icon}}" naam="{{cat.naam}}"></fns-catitem>
+    </template>
   </template>
   <script>
     (function () {
@@ -11,6 +14,9 @@
 
       Polymer({
         // define element prototype here
+        ready: function(){
+
+        }
       });
 
     })();
