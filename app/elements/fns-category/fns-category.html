@@ -15,6 +15,14 @@
     <template repeat="{{key in keys}}" id="gamestemplate">
      <fns-gameitem gamedata="{{data[key]}}"></fns-gameitem>
     </template>
+  <div vertical layout center>
+    <div class="btns">
+    <core-icon-button class="new-btn">New game</core-icon-button>
+    <core-icon-button class="rankings-btn">Rankings</core-icon-button>
+    </div>
+    <h2>Laatste games</h2>
+  </div>
+    
   </template>
   <script>
     (function () {
