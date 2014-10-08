@@ -21,8 +21,15 @@
     <core-icon-button>Rankings</core-icon-button>
     <h3>Laatste games</h3>
     <template repeat="{{key in keys}}" id="gamestemplate">
-     <fns-gameitem gamedata="{{data[key]}}"></fns-gameitem>
+      <fns-gameitem gamedata="{{data[key]}}"></fns-gameitem>
     </template>
+
+  <div vertical layout center>
+    <div class="btns">
+      <core-icon-button class="new-btn">New game</core-icon-button>
+      <core-icon-button class="rankings-btn">Rankings</core-icon-button>
+    </div>
+    <h2>Laatste games</h2>
   </div>
     
   </template>
@@ -34,7 +41,9 @@
         // define element prototype here
         ready: function(){
           this.$.newgame.addEventListener('gameStart', function(e){
-            console.log(e.detail.msg);
+            console.log(e.detail.game);
+            this.route = '/game/'+e.detail.cat+'/'+e.detail.game;
+            this.fire('route', { route: this.route })
           });
           this.$.collapse.close();
         },
