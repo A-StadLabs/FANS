@@ -1,10 +1,10 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 
-<polymer-element name="fns-catitem" attributes="icon naam">
+<polymer-element name="fns-catitem" attributes="icon naam key">
   <template>
     <link rel="stylesheet" href="fns-catitem.css">
-    <a is="pushstate-anchor" href="/#/category/{{naam}}">
+    <a is="pushstate-anchor" href="/#/category/{{key}}">
     <core-icon-button icon="{{icon}}" on-tap="{{catTapped}}">{{naam}}</core-icon-button></a>
   </template>
   <script>
@@ -14,7 +14,7 @@
       Polymer({
         // define element prototype here
         catTapped: function(e, detail, sender){
-          this.fire('tapped', { msg: this.naam });
+          this.fire('tapped', { msg: this.key });
         }
       });
 

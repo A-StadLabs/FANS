@@ -1,0 +1,19 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="fns-gameitem" attributes="gamedata">
+  <template>
+    <link rel="stylesheet" href="fns-gameitem.css">
+    <h2>{{gamedata.ploeg1}} vs. {{gamedata.ploeg2}}</h2>
+    <h1>{{gamedata.score1}} - {{gamedata.score2}}</h1>
+  </template>
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        // define element prototype here
+      });
+
+    })();
+  </script>
+</polymer-element>

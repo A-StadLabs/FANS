@@ -1,13 +1,20 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
+<link rel="import" href="../../elements/fns-gameitem/fns-gameitem.html">
+<link rel="import" href="../../elements/fns-newgame/fns-newgame.html">
 
 <polymer-element name="fns-category" attributes="cat">
   <template>
     <link rel="stylesheet" href="fns-category.css">
-    <core-icon-button icon="add">New game</core-icon-button>
+    <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" log location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games"></firebase-element>
+    <core-icon-button icon="add" on-tap="{{toggleNewgame}}">New game</core-icon-button>
     <core-icon-button icon="menu">Rankings</core-icon-button>
     <h2>Laatste games</h2>
-    
+    <fns-newgame cat="{{cat}}" hidden?="{{newgame}}" id="newgame"></fns-newgame>
+    <template repeat="{{key in keys}}" id="gamestemplate">
+     <fns-gameitem gamedata="{{data[key]}}"></fns-gameitem>
+    </template>
   </template>
   <script>
     (function () {
@@ -15,6 +22,17 @@
 
       Polymer({
         // define element prototype here
+        ready: function(){
+          this.toggleNewgame();
+          this.$.newgame.addEventListener('gameStart', function(e){
+            console.log(e.detail.msg);
+          });
+        },
+
+        toggleNewgame: function(){
+          this.newgame = !this.newgame;
+        },
+
       });
 
     })();
