@@ -10,7 +10,6 @@
     <input id="ploeg1" value="{{ploeg1}}" placeholder="ploeg1" />
     <input id="ploeg2" value="{{ploeg2}}" placeholder="ploeg2" />
     <core-icon-button icon="arrow-forward" on-tap="{{submit}}">Opslaaaan</core-icon-button>
-
   </template>
   <script>
     (function () {
@@ -30,10 +29,12 @@
 
         ready: function(){
           this.gameentry = true;
+          var that = this;
           this.$.ajax.addEventListener("core-response", 
             function(e) {
-              this.response = e.detail.response
-              this.fire('gameStart', { msg: this.response.name});
+              this.response = e.detail.response.name;
+              console.log('response: ', this.response);
+              this.fire('gameStart', { cat: that.cat, game: this.response});
             }
           );
         },

@@ -1,0 +1,23 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
+
+<polymer-element name="fns-gameplay" attributes="game cat">
+  <template>
+    <link rel="stylesheet" href="fns-gameplay.css">
+    <firebase-element id="base" on-data-change="{{handleResponse}}" data="{{data}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/"></firebase-element>
+    <h1>{{data.ploeg1}}</h1>
+    <h2>{{data.score1}}</h2>
+    <h1>{{data.ploeg2}}</h1>
+    <h2>{{data.score2}}</h2>
+  </template>
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        // define element prototype here
+      });
+
+    })();
+  </script>
+</polymer-element>
