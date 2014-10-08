@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Polymer WebApp</title>
+  <title>Ranking</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -21,14 +21,17 @@
 
   <!-- build:vulcanized elements/elements.vulcanized.html -->
   <link rel="import" href="elements/elements.html">
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
   <!-- endbuild-->
 </head>
 
 <body unresolved>
 
-<core-header-panel fit>
+<core-header-panel fit mode="seamed">
 
-  <core-toolbar>RANKING</core-toolbar>
+
+  <core-toolbar vertical layout start center-justified><h1>RANKING</h1></core-toolbar>
+
 
   <app-router>
       <app-route path="/" import="elements/fns-intro/fns-intro.html"></app-route>
