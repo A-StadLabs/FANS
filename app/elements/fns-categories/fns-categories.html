@@ -1,11 +1,13 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../elements/fns-catitem/fns-catitem.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
 
-<polymer-element name="fns-categories" attributes="categories">
+<polymer-element name="fns-categories" attributes="">
   <template>
     <link rel="stylesheet" href="fns-categories.css">
-    <template repeat="{{cat in categories}}" id="cattemplate">
-      <fns-catitem icon="{{cat.icon}}" naam="{{cat.naam}}"></fns-catitem>
+    <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" log location="https://asl-ranking.firebaseio.com/categories/"></firebase-element>
+    <template repeat="{{key in keys}}" id="cattemplate">
+      <fns-catitem icon="{{data[key].icon}}" naam="{{data[key].naam}}"></fns-catitem>
     </template>
   </template>
   <script>
@@ -14,9 +16,6 @@
 
       Polymer({
         // define element prototype here
-        ready: function(){
-
-        }
       });
 
     })();
