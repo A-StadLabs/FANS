@@ -1,5 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/core-overlay/core-overlay.html">
+  <link rel="import" href="../../bower_components/core-transition/core-transition-css.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
 <link rel="import" href="../../elements/fns-gameitem/fns-gameitem.html">
 <link rel="import" href="../../elements/fns-newgame/fns-newgame.html">
@@ -11,9 +13,13 @@
       <div vertical layout center class="btns">
 
     <core-icon-button on-tap="{{toggleNewgame}}">New game</core-icon-button>
+
+    <core-overlay id="collapse"  layered backdrop transition="core-transition-center" >
+    <fns-newgame cat="{{cat}}" id="newgame"></fns-newgame>
+    </core-overlay>
+    
     <core-icon-button>Rankings</core-icon-button>
     <h3>Laatste games</h3>
-    <fns-newgame cat="{{cat}}" hidden?="{{newgame}}" id="newgame"></fns-newgame>
     <template repeat="{{key in keys}}" id="gamestemplate">
      <fns-gameitem gamedata="{{data[key]}}"></fns-gameitem>
     </template>
@@ -27,14 +33,15 @@
       Polymer({
         // define element prototype here
         ready: function(){
-          this.toggleNewgame();
           this.$.newgame.addEventListener('gameStart', function(e){
             console.log(e.detail.msg);
           });
+          this.$.collapse.close();
         },
 
         toggleNewgame: function(){
-          this.newgame = !this.newgame;
+        this.$.collapse.open();
+        console.log('lekker werken', this.$.collapse);
         },
 
       });

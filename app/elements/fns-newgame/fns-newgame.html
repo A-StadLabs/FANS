@@ -6,10 +6,15 @@
   <template>
     <link rel="stylesheet" href="fns-newgame.css">
     <core-ajax id="ajax" url="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/.json" method="POST" on-core-repsonse="{{testje}}"></core-ajax>
-    <h1>Start een nieuwe game in cat {{cat}}</h1>
+    <div vertical layout center center-justified>
+    <div class="titel">
+      <p>Start een nieuwe game<br>
+      <span><h3>in cat {{cat}}</h3></span></p>
+    </div>
     <input id="ploeg1" value="{{ploeg1}}" placeholder="ploeg1" />
     <input id="ploeg2" value="{{ploeg2}}" placeholder="ploeg2" />
     <core-icon-button icon="arrow-forward" on-tap="{{submit}}">Opslaaaan</core-icon-button>
+  </div>
 
   </template>
   <script>
