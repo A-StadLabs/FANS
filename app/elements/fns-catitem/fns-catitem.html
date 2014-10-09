@@ -6,8 +6,8 @@
 <polymer-element name="fns-catitem" attributes="icon naam key">
   <template>
     <link rel="stylesheet" href="fns-catitem.css">
-    <div vertical layout center center-justified>
-    <a is="pushstate-anchor" href="/#/category/{{key}}" on-tap="{{catTapped}}">{{naam}}</a>
+    <div class="catitem" vertical layout center center-justified>
+     <a is="pushstate-anchor" href="/#/category/{{key}}" on-tap="{{catTapped}}">{{naam}}</a>
   </div>
   </template>
   <script>
