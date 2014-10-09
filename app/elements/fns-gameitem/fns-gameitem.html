@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<polymer-element name="fns-gameitem" attributes="gamedata">
+<polymer-element name="fns-gameitem" attributes="gamedata key" on-tap="{{gameTap}}">
   <template>
   <link rel="stylesheet" href="fns-gameitem.css">
   <div horizontal layout center center-justified>
@@ -17,6 +17,10 @@
 
       Polymer({
         // define element prototype here
+        gameTap: function(){
+          console.log('game tapped in gameitem');
+          this.fire('game-tap', { game: this.key, cat: this.gamedata.cat });
+        }
       });
 
     })();
