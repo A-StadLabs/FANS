@@ -1,11 +1,14 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/core-item/core-item.html">
+
 
 <polymer-element name="fns-catitem" attributes="icon naam key">
   <template>
     <link rel="stylesheet" href="fns-catitem.css">
-    <a is="pushstate-anchor" href="/#/category/{{key}}">
-    <core-icon-button icon="{{icon}}" on-tap="{{catTapped}}">{{naam}}</core-icon-button></a>
+    <div vertical layout center center-justified>
+    <a is="pushstate-anchor" href="/#/category/{{key}}" on-tap="{{catTapped}}">{{naam}}</a>
+  </div>
   </template>
   <script>
     (function () {

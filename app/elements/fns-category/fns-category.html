@@ -1,7 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../../bower_components/core-overlay/core-overlay.html">
-  <link rel="import" href="../../bower_components/core-transition/core-transition-css.html">
+<link rel="import" href="../../bower_components/core-transition/core-transition-css.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
 <link rel="import" href="../../elements/fns-gameitem/fns-gameitem.html">
 <link rel="import" href="../../elements/fns-newgame/fns-newgame.html">
@@ -10,28 +10,25 @@
   <template>
     <link rel="stylesheet" href="fns-category.css">
     <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" log location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games"></firebase-element>
-      <div vertical layout center class="btns">
+      <div vertical layout center>
 
-    <core-icon-button on-tap="{{toggleNewgame}}">New game</core-icon-button>
+    <core-icon-button class="newbtn" on-tap="{{toggleNewgame}}"> Nieuwe game</core-icon-button>
 
-    <core-overlay id="collapse"  layered backdrop transition="core-transition-center" >
+    <core-overlay id="collapse" layered backdrop transition="core-transition-center" >
     <fns-newgame cat="{{cat}}" id="newgame"></fns-newgame>
     </core-overlay>
     
     <core-icon-button>Rankings</core-icon-button>
+
     <h3>Laatste games</h3>
     <template repeat="{{key in keys}}" id="gamestemplate">
       <fns-gameitem gamedata="{{data[key]}}"></fns-gameitem>
+
+        </div>
+
     </template>
 
-  <div vertical layout center>
-    <div class="btns">
-      <core-icon-button class="new-btn">New game</core-icon-button>
-      <core-icon-button class="rankings-btn">Rankings</core-icon-button>
-    </div>
-    <h2>Laatste games</h2>
-  </div>
-    
+
   </template>
   <script>
     (function () {
@@ -49,7 +46,7 @@
         },
 
         toggleNewgame: function(){
-        this.$.collapse.open();
+        this.$.collapse.toggle();
         console.log('lekker werken', this.$.collapse);
         },
 

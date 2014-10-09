@@ -6,9 +6,12 @@
   <template>
     <link rel="stylesheet" href="fns-categories.css">
     <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" log location="https://asl-ranking.firebaseio.com/categories/"></firebase-element>
+    <div horizontal layout center center-justified>
     <template repeat="{{key in keys}}" id="cattemplate">
       <fns-catitem icon="{{data[key].icon}}" naam="{{data[key].naam}}" key="{{key}}" on-tapped="{{catSelect}}"></fns-catitem>
     </template>
+        </div>
+
   </template>
   <script>
     (function () {

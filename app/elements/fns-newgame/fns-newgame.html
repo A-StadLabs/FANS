@@ -1,19 +1,23 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
 
 <polymer-element name="fns-newgame" attributes="cat">
   <template>
     <link rel="stylesheet" href="fns-newgame.css">
     <core-ajax id="ajax" url="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/.json" method="POST" on-core-repsonse="{{testje}}"></core-ajax>
     <div vertical layout center center-justified>
-    <div class="titel">
-      <p>Start een nieuwe game<br>
-      <span><h3>in cat {{cat}}</h3></span></p>
-    </div>
+<!--       <h1>Start een nieuwe game</h1>
+      <small>in cat {{cat}}</small> -->
+    <h3>Nieuwe game?</h3>
+    <small>Geef hier de deelnemers op</small>
+
+
     <input id="ploeg1" value="{{ploeg1}}" placeholder="ploeg1" />
     <input id="ploeg2" value="{{ploeg2}}" placeholder="ploeg2" />
-    <core-icon-button icon="arrow-forward" on-tap="{{submit}}">Opslaaaan</core-icon-button>
+    <paper-button on-tap="{{submit}}" stretch>STARTEN</paper-button>
   </div>
 
 

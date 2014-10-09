@@ -27,4 +27,10 @@ h3 {
 	text-transform: uppercase;
 	font-weight: 300;
 	color: #808080;
+	margin-top: 40px;
+}
+
+
+.newbtn {
+	margin-top: 30px;
 }
