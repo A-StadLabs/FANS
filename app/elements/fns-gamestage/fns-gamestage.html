@@ -4,7 +4,7 @@
   <link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
   <link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
 
-<polymer-element name="fns-gamestage" attributes="">
+<polymer-element name="fns-gamestage" attributes="titlecat">
   <template>
     <link rel="stylesheet" href="fns-gamestage.css">
     <core-header-panel fit mode="seamed">
@@ -23,9 +23,20 @@
   <script>
     (function () {
       'use strict';
-
+      
       Polymer({
         // define element prototype here
+        ready: function(){
+
+          this.addEventListener('route', function(e, detail, sender) {
+      // Perform some behaviour
+    
+      console.log('going route', e.detail.route);
+      
+      this.$.router.go(e.detail.route);
+      });
+
+        }
       });
 
     })();
