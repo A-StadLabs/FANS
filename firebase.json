@@ -1,0 +1,9 @@
+{
+  "firebase": "asl-ranking",
+  "public": "app",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

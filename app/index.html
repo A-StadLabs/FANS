@@ -14,30 +14,18 @@
   <!-- endbuild-->
 
   <script src="bower_components/platform/platform.js"></script>
-  <link rel="import" href="bower_components/app-router/app-router.html">
 
-  <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
-  <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="elements/fns-gamestage/fns-gamestage.html">
 
-  <!-- build:vulcanized elements/elements.vulcanized.html -->
-  <link rel="import" href="elements/elements.html">
-  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
   <!-- endbuild-->
 </head>
 
 <body unresolved fullbleed>
 
-<core-header-panel fit mode="seamed">
+<fns-gamestage></fns-gamestage>
 
-  <core-toolbar vertical layout center center-justified><h1>FANS !</h1></core-toolbar>
-  <app-router id="router">
-      <app-route path="/" import="elements/fns-intro/fns-intro.html"></app-route>
-      <app-route path="/category/:cat" import="elements/fns-category/fns-category.html"></app-route>
-      <app-route path="/game/:cat/:game" import="elements/fns-gameplay/fns-gameplay.html"></app-route>
-      <!-- <app-route path="/team/:teamnaam" import="elements/yo-list/yo-list.html"></app-route> -->
-  </app-router>
 
-</core-header-panel>
   <!-- build:js scripts/app.js -->
   <script src="scripts/app.js"></script>
   <!-- endbuild-->
