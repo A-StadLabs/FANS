@@ -36,6 +36,7 @@
           this.data = JSON.stringify(this.data);
           that.$.ajax.body = this.data;
           that.$.ajax.go();
+          //this.fire('submitted');
         },
 
         ready: function(){

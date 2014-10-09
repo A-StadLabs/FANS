@@ -37,18 +37,21 @@
       Polymer({
         // define element prototype here
         ready: function(){
+          var that = this;
           this.$.newgame.addEventListener('gameStart', function(e){
             console.log(e.detail.game);
             this.route = '/game/'+e.detail.cat+'/'+e.detail.game;
-            this.fire('route', { route: this.route })
+            this.fire('route', { route: this.route });
+            that.$.collapse.close();
           });
-          this.$.collapse.close();
+          
         },
 
         toggleNewgame: function(){
         this.$.collapse.toggle();
         console.log('lekker werken', this.$.collapse);
-        },
+        }
+
 
       });
 
