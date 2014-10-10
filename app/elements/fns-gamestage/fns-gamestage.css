@@ -3,7 +3,6 @@
 }
 
 body {
-  background: #F5F5F5;
   font-family: 'Lato', sans-serif;
 }
 
@@ -22,3 +21,9 @@ core-toolbar h1 {
  b {
  	text-transform: uppercase;
  }
+
+
+
+#gamescenes {
+	  background: #F5F5F5;
+}
