@@ -14,9 +14,13 @@
         <core-icon-button on-tap="{{toggleLog}}" icon="drive-document"></core-icon-button>
         <h1>{{data.ploeg1}}</h1>
         <h2 on-tap="{{addPoint1}}">{{data.score1}}</h2>
+        <core-icon-button icon="add-circle" on-tap="{{addPoint1}}"></core-icon-button>
+        <core-icon-button icon="remove-circle" on-tap="{{removePoint1}}"></core-icon-button>
 
         <h1>{{data.ploeg2}}</h1>
         <h2 on-tap="{{addPoint2}}">{{data.score2}}</h2>
+        <core-icon-button icon="add-circle" on-tap="{{addPoint2}}"></core-icon-button>
+        <core-icon-button icon="remove-circle" on-tap="{{removePoint2}}"></core-icon-button>
 
     </section>
 
@@ -79,6 +83,11 @@
           //berichten.sort(function(a,b){ return a.afstand - b.afstand});
         },
 
+        gameChanged: function(){
+          console.log('game changed: ', this.game, ' cat: ', this.cat);
+          this.pageSelect = 0;
+        },
+
         addPoint1: function(){
           var that = this;
           this.data.score1++; 
@@ -89,6 +98,18 @@
           var that = this;
           this.data.score2++;
           that.postLog('Punt voor ploeg 2. De stand is '+this.data.score1+' - '+this.data.score2+'.'); 
+        },
+
+        removePoint1: function(){
+          var that = this;
+          this.data.score1--; 
+          that.postLog('Foutje. De nieuwe stand is '+this.data.score1+' - '+this.data.score2+'.');
+        },
+
+        removePoint2: function(){
+          var that = this;
+          this.data.score2--;
+          that.postLog('Foutje. De nieuwe stand is '+this.data.score1+' - '+this.data.score2+'.'); 
         }
       });
 

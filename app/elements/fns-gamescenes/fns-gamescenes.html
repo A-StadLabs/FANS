@@ -18,10 +18,10 @@
         </template>
       </section>
       <section>
-          <fns-category cat="{{selectedCat}}" on-game-play="{{game}}"></fns-category>
+          <fns-category cat="{{selectedCat}}" on-game-play="{{gameit}}"></fns-category>
       </section>
       <section>
-          <fns-gameplay game="{{game}}" cat="{{cat}}"></fns-gameplay>
+          <fns-gameplay game="{{game}}" cat="{{selectedCat}}"></fns-gameplay>
       </section>
     </core-animated-pages>
   </template>
@@ -30,18 +30,24 @@
       'use strict';
 
       Polymer({
+        ready: function(){
+          this.game = '';
+          this.cat = '';
+          this.selectedCat = '';
+        },
         // define element prototype here
         catSelect: function(e){
-          console.log(e.detail.msg);
+          console.log(e.detail.key);
           this.scene = 1;
           this.fire('set-tit', { title: e.detail.naam });
           this.selectedCat = e.detail.key;
         },
 
-        game: function(e){
+        gameit: function(e){
+          console.log('Game on');
           this.scene = 2;
           this.game = e.detail.game;
-          this.cat = e.detail.cat;
+          this.cat = e.detail.key;
         }
       });
 

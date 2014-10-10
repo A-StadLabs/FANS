@@ -47,7 +47,12 @@
         },
 
         game: function(e){
+          console.log('game-fire: game: '+e.detail.game+' / cat: '+e.detail.cat);
           this.fire('game-play', { game: e.detail.game, cat: e.detail.cat });
+        },
+
+        catChanged: function(){
+          console.log('categorie in fns-category: ', this.cat);
         }
 
 
