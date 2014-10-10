@@ -1,14 +1,26 @@
 :host {
   display: block;
-  background: white;
-  height: 100%;
-  width: 100%;
-
 }
 
+
+#gameplaypages {
+    	background-color:red;
+
+}
 
 .ploeg1score {
 	border-bottom: 1px solid #BFBFBF;
 	  width: 100%;
 
+}
+
+.playstate {
+	  background: white;
+}
+
+h2 {
+	font-size: 60px;
+	font-weight: 200;
+	margin: 0px 0px 0px 0px;
+	background-color: green;
 }

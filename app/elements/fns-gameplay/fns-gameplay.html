@@ -9,26 +9,36 @@
   <template>
     <link rel="stylesheet" href="fns-gameplay.css">
     <firebase-element id="base" on-data-change="{{handleResponse}}" data="{{data}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/"></firebase-element>
-    <core-animated-pages selected="{{pageSelect}}">
+    <core-animated-pages selected="{{pageSelect}}" id="gameplaypages">
       <section>
-        <div vertical layout center>
+        <div vertical layout center class="playstate">
 
-        <core-icon-button on-tap="{{toggleLog}}" icon="drive-document"></core-icon-button>
+        <core-icon-button self-end on-tap="{{toggleLog}}" icon="drive-document"></core-icon-button>
         <h1>{{data.ploeg1}}</h1>
-        <h2 on-tap="{{addPoint1}}">{{data.score1}}</h2>
-        <core-icon-button icon="add-circle" on-tap="{{addPoint1}}"></core-icon-button>
-        <core-icon-button icon="remove-circle" on-tap="{{removePoint1}}"></core-icon-button>
+        <div horizontal layout>
+          <h2 on-tap="{{addPoint1}}">{{data.score1}}</h2>
+          <div vertical layout>
+          <core-icon-button icon="add-circle" on-tap="{{addPoint1}}"></core-icon-button>
+          <core-icon-button icon="remove-circle" on-tap="{{removePoint1}}"></core-icon-button>
+        </div>
+        </div>
 
         <h1>{{data.ploeg2}}</h1>
-        <h2 on-tap="{{addPoint2}}">{{data.score2}}</h2>
-        <core-icon-button icon="add-circle" on-tap="{{addPoint2}}"></core-icon-button>
-        <core-icon-button icon="remove-circle" on-tap="{{removePoint2}}"></core-icon-button>
+        <div horizontal layout>
+          <h2 on-tap="{{addPoint2}}">{{data.score2}}</h2>
+          <div vertical layout>
+          <core-icon-button icon="add-circle" on-tap="{{addPoint2}}"></core-icon-button>
+          <core-icon-button icon="remove-circle" on-tap="{{removePoint2}}"></core-icon-button>
+          </div>
+        </div>
+
         </div>
     </section>
 
     <section>
       <firebase-element id="cbase" on-data-change="{{handleComments}}" keys="{{ckeys}}" data="{{cdata}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/comments/"></firebase-element>
       <core-ajax method="POST" id="commPost" handleAs="json" data url="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/comments/.json"></core-ajax>
+      <div class="commentstate">
       <core-icon-button on-tap="{{toggleScore}}" icon="view-stream"></core-icon-button>
       <input id="comment" value="{{commentPost}}">
       <core-icon-button icon="submit" on-tap="{{postit}}">Toevoegen</core-icon-button>
@@ -36,6 +46,7 @@
       <template repeat="{{comm in comments}}">
       <p>{{comm.data.comment}}</p>
       </template>
+    </div>
 
     </section>
     </core-animated-pages>
