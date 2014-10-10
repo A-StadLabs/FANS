@@ -1,7 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
-<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 
 
@@ -25,33 +25,40 @@
             <core-icon-button icon="expand-less" on-tap="{{addPoint1}}" self-end class="pointbtn"></core-icon-button>
             <core-icon-button icon="expand-more" on-tap="{{removePoint1}}" self-end class="pointbtn"></core-icon-button>
           </div>
-        <h2 flex>{{data.score1}}</h2>
-
-        <h2>{{data.score2}}</h2>
+        <h2 class="score1" flex>{{data.score1}}</h2>
+        <div class="streepje">|</div>
+        <h2 class="score2" flex>{{data.score2}}</h2>
           <div vertical layout class="pointbtns">
             <core-icon-button icon="expand-less" on-tap="{{addPoint2}}" self-end class="pointbtn"></core-icon-button>
             <core-icon-button icon="expand-more" on-tap="{{removePoint2}}" self-end class="pointbtn"></core-icon-button>
           </div>
         </div>
-        </div>
 
 
-    </section>
 
-    <section class="commstate">
+
+    <div class="commstate" vertical layout center>
       <firebase-element id="cbase" on-data-change="{{handleComments}}" keys="{{ckeys}}" data="{{cdata}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/comments/"></firebase-element>
       <core-ajax method="POST" id="commPost" handleAs="json" data url="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/comments/.json"></core-ajax>
-      <!-- <div class="commentstate">
+
+<!--       <h3>Laatste games</h3>
+ -->
+      <div class="commentstate">
 
       <input id="comment" value="{{commentPost}}">
-      <core-icon-button icon="submit" on-tap="{{postit}}">Toevoegen</core-icon-button>
+      <paper-button icon="submit" on-tap="{{postit}}" class="addbtn">Toevoegen</paper-button>
       
       <template repeat="{{comm in comments}}">
-      <p>{{comm.data.comment}}</p>
+      <div class="comments">{{comm.data.time}}{{comm.data.comment}}</div>
       </template>
-    </div> -->
+    </div>
 
-    </section>
+    </div>
+
+
+
+            </div>
+
     </core-animated-pages>
   </template>
   <script>

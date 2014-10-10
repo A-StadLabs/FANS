@@ -10,7 +10,7 @@
 <polymer-element name="fns-gamescenes" attributes="scene">
   <template>
     <link rel="stylesheet" href="fns-gamescenes.css">
-    <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" location="https://asl-ranking.firebaseio.com/categories/"></firebase-element>
+    <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" log location="https://asl-ranking.firebaseio.com/categories/"></firebase-element>
     <core-animated-pages selected="{{scene}}" transitions="slide-from-right">
       <section>
                   <div vertical layout center center-justified class="catcontainer">
@@ -41,6 +41,7 @@
         },
         // define element prototype here
         catSelect: function(e){
+          console.log(e.detail.key);
           this.scene = 1;
           this.fire('set-tit', { title: e.detail.naam });
           this.selectedCat = e.detail.key;
@@ -48,6 +49,7 @@
         },
 
         gameit: function(e){
+          console.log('Game on');
           this.scene = 2;
           this.game = e.detail.game;
           this.cat = e.detail.key;

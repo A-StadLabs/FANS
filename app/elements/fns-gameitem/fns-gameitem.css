@@ -1,7 +1,11 @@
 :host {
+    -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   display: block;
   background: white;
   width: 90%;
+  padding: 5px;
   margin-top: 10px;
   box-shadow: 0px 2px 2px rgba(0,0,0,0.10);
   
@@ -9,7 +13,8 @@
 
 .ploeg {
 	width: 34%;
-	font-size: 11px;
+	font-size: 10px;
+  font-weight: 200;
   word-wrap: break-word;
 }
 
@@ -28,6 +33,11 @@
 .streep {
 	width: 4%;
 	text-align: center;
+  font-size: 20px;
+  font-weight: 100;
+  color: black; 
+}
+
 }
 
 
