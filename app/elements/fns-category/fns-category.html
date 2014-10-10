@@ -6,14 +6,14 @@
 <link rel="import" href="../../elements/fns-gameitem/fns-gameitem.html">
 <link rel="import" href="../../elements/fns-newgame/fns-newgame.html">
 
-<polymer-element name="fns-category" attributes="cat">
+<polymer-element name="fns-category" attributes="cat titel">
   <template>
     <link rel="stylesheet" href="fns-category.css">
     <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games"></firebase-element>
     <div vertical layout center>
       <core-icon-button class="newbtn" on-tap="{{toggleNewgame}}"> Nieuwe game</core-icon-button>
       <core-overlay id="collapse" layered backdrop transition="core-transition-center" >
-        <fns-newgame cat="{{cat}}" id="newgame"></fns-newgame>
+        <fns-newgame cat="{{cat}}" titel="{{titel}}" id="newgame"></fns-newgame>
       </core-overlay>
       <core-icon-button>Rankings</core-icon-button>
       <h3>Laatste games</h3>
@@ -37,7 +37,6 @@
             console.log('ROUTE: ', this.route);
             that.$.collapse.close();
             that.fire('route', { route: this.route });
-            
           });
         },
 
@@ -53,6 +52,11 @@
 
         catChanged: function(){
           console.log('categorie in fns-category: ', this.cat);
+          console.log('title: ', this.titel);
+        },
+
+        handleResponse: function(){
+          console.log('data changed');
         }
 
 

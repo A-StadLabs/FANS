@@ -22,7 +22,7 @@
 
       </section>
       <section>
-          <fns-category cat="{{selectedCat}}" on-game-play="{{gameit}}"></fns-category>
+          <fns-category cat="{{selectedCat}}" titel="{{titel}}" on-game-play="{{gameit}}"></fns-category>
       </section>
       <section>
           <fns-gameplay game="{{game}}" cat="{{selectedCat}}"></fns-gameplay>
@@ -45,6 +45,7 @@
           this.scene = 1;
           this.fire('set-tit', { title: e.detail.naam });
           this.selectedCat = e.detail.key;
+          this.titel = e.detail.naam;
         },
 
         gameit: function(e){
