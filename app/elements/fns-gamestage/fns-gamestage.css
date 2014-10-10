@@ -3,7 +3,6 @@
 }
 
 body {
-  background: #F5F5F5;
   font-family: 'Lato', sans-serif;
 }
 
@@ -36,3 +35,7 @@ core-toolbar h1 {
  	font-size: 12px;
  	opacity: 0.7;
  }
+
+#gamescenes {
+	  background: #F5F5F5;
+}
