@@ -4,15 +4,17 @@
   width: 90%;
   margin-top: 10px;
   box-shadow: 0px 2px 4px #CCCCCC;
+  
 }
 
 .ploeg {
-	width: 33%;
+	width: 34%;
 	font-size: 11px;
+  word-wrap: break-word;
 }
 
 .score {
-	width: 10%;
+	width: 14%;
 }
 
 .left {
@@ -35,3 +37,14 @@ h1 {
   font-size: 30px;
   font-weight: 300;
   }
+
+
+
+
+/*.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+}*/

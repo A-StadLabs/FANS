@@ -13,9 +13,13 @@
     <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" log location="https://asl-ranking.firebaseio.com/categories/"></firebase-element>
     <core-animated-pages selected="{{scene}}" transitions="slide-from-right">
       <section>
+                  <div vertical layout center center-justified class="catcontainer">
+
         <template repeat="{{key in keys}}" id="cattemplate">
           <fns-catitem icon="{{data[key].icon}}" naam="{{data[key].naam}}" key="{{key}}" on-cat-tap="{{catSelect}}"></fns-catitem>
         </template>
+                </div>
+
       </section>
       <section>
           <fns-category cat="{{selectedCat}}" on-game-play="{{game}}"></fns-category>

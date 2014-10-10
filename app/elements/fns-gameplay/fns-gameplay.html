@@ -11,12 +11,21 @@
     <firebase-element id="base" on-data-change="{{handleResponse}}" data="{{data}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/"></firebase-element>
     <core-animated-pages selected="{{pageSelect}}">
       <section>
-        <core-icon-button on-tap="{{toggleLog}}" icon="drive-document"></core-icon-button>
-        <h1>{{data.ploeg1}}</h1>
-        <h2 on-tap="{{addPoint1}}">{{data.score1}}</h2>
+        <div vertical layout center>
+          
+          <core-icon-button self-end on-tap="{{toggleLog}}" icon="drive-document"></core-icon-button>
+        
+          <div vertical layout center class="ploeg1score">
+            <h1>{{data.ploeg1}}</h1>
+            <h2 on-tap="{{addPoint1}}">{{data.score1}}</h2>
+          </div>
 
-        <h1>{{data.ploeg2}}</h1>
-        <h2 on-tap="{{addPoint2}}">{{data.score2}}</h2>
+          <div vertical layout center class="ploeg2score">
+            <h1>{{data.ploeg2}}</h1>
+            <h2 on-tap="{{addPoint2}}">{{data.score2}}</h2>
+          </div>
+
+        </div>
 
     </section>
 

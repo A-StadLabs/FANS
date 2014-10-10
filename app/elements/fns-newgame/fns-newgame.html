@@ -11,7 +11,7 @@
     <div vertical layout center center-justified>
 <!--       <h1>Start een nieuwe game</h1>
       <small>in cat {{cat}}</small> -->
-    <h3>Nieuwe game?</h3>
+    <h3>Nieuwe <b>{{titlecat}}</b>game?</h3>
     <small>Geef hier de deelnemers op</small>
 
 
@@ -40,6 +40,7 @@
         },
 
         ready: function(){
+          this.titlecat = '//';
           this.gameentry = true;
           var that = this;
           this.$.ajax.addEventListener("core-response", 
