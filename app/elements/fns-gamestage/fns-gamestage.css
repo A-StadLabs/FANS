@@ -20,7 +20,10 @@ core-toolbar h1 {
   line-height: 16px;
   }
 
- b {
+
+
+ .titleadd {
+  color: rgba(255,255,255,0.25);
  	text-transform: uppercase;
  }
 
@@ -31,9 +34,9 @@ core-toolbar h1 {
  p {
  	text-transform: uppercase;
  	color: white;
- 	line-height: 10px;
+  font-weight: 500;
+ 	line-height: 8px;
  	font-size: 12px;
- 	opacity: 0.7;
  }
 
 #gamescenes {
