@@ -4,22 +4,24 @@
 <link rel="import" href="../../elements/fns-category/fns-category.html">
 <link rel="import" href="../../elements/fns-gameplay/fns-gameplay.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
+<link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-from-right.html">
+
 
 <polymer-element name="fns-gamescenes" attributes="scene">
   <template>
     <link rel="stylesheet" href="fns-gamescenes.css">
     <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" log location="https://asl-ranking.firebaseio.com/categories/"></firebase-element>
-    <core-animated-pages selected="{{scene}}">
+    <core-animated-pages selected="{{scene}}" transitions="slide-from-right">
       <section>
         <template repeat="{{key in keys}}" id="cattemplate">
-          <fns-catitem icon="{{data[key].icon}}" naam="{{data[key].naam}}" key="{{key}}" on-tapped="{{catSelect}}"></fns-catitem>
+          <fns-catitem icon="{{data[key].icon}}" naam="{{data[key].naam}}" key="{{key}}" on-cat-tap="{{catSelect}}"></fns-catitem>
         </template>
       </section>
       <section>
-          <fns-category cat></fns-category>
+          <fns-category cat="{{selectedCat}}" on-game-play="{{game}}"></fns-category>
       </section>
       <section>
-          <fns-gameplay game cat></fns-gameplay>
+          <fns-gameplay game="{{game}}" cat="{{cat}}"></fns-gameplay>
       </section>
     </core-animated-pages>
   </template>
@@ -29,6 +31,18 @@
 
       Polymer({
         // define element prototype here
+        catSelect: function(e){
+          console.log(e.detail.msg);
+          this.scene = 1;
+          this.fire('set-tit', { title: e.detail.naam });
+          this.selectedCat = e.detail.key;
+        },
+
+        game: function(e){
+          this.scene = 2;
+          this.game = e.detail.game;
+          this.cat = e.detail.cat;
+        }
       });
 
     })();

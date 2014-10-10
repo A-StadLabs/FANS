@@ -3,11 +3,11 @@
 <link rel="import" href="../../bower_components/core-item/core-item.html">
 
 
-<polymer-element name="fns-catitem" attributes="icon naam key">
+<polymer-element name="fns-catitem" attributes="icon naam key" on-tap="tapped">
   <template>
     <link rel="stylesheet" href="fns-catitem.css">
     <div class="catitem" vertical layout center center-justified>
-     <a is="pushstate-anchor" href="/#/category/{{key}}" on-tap="{{catTapped}}">{{naam}}</a>
+      {{naam}}
   </div>
   </template>
   <script>
@@ -16,9 +16,10 @@
 
       Polymer({
         // define element prototype here
-        catTapped: function(e, detail, sender){
-          this.fire('tapped', { msg: this.key, cat: this.naam });
+        tapped: function(){
+          this.fire('cat-tap', { key: this.key, naam: this.naam })
         }
+
       });
 
     })();

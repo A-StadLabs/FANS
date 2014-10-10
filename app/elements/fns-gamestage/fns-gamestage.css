@@ -18,3 +18,7 @@ core-toolbar h1 {
   font-size: 30px;
   font-weight: 300;
   }
+
+ b {
+ 	text-transform: uppercase;
+ }

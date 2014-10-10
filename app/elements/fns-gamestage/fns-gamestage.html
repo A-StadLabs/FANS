@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="fns-gamestage.css">
 
     <core-header-panel fit mode="seamed">
-      <core-toolbar vertical layout center center-justified><h1><b>{{titlecat}}</b>FANS !</h1></core-toolbar>
+      <core-toolbar vertical layout center center-justified on-tap="{{home}}"><h1><b>{{titlecat}}</b>FANS</h1></core-toolbar>
       <div main>
-      <fns-gamescenes scene="0"></fns-gamescenes>
+      <fns-gamescenes scene="{{scene}}" on-set-tit="{{setTitle}}"></fns-gamescenes>
       </div>
 </core-header-panel>
   </template>
@@ -20,7 +20,19 @@
       'use strict';
       
       Polymer({
+        ready: function(){
+          this.scene = 2;
+        },
         // define element prototype here
+        setTitle: function(e){
+          this.titlecat = e.detail.title;
+        },
+
+        home: function(){
+          this.scene = 0;
+          this.titlecat = '';
+        }
+
       });
 
     })();
