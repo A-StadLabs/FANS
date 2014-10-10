@@ -37,6 +37,7 @@
             console.log('ROUTE: ', this.route);
             that.$.collapse.close();
             that.fire('route', { route: this.route });
+            
           });
         },
 
@@ -48,8 +49,7 @@
         game: function(e){
           //console.log('game tapped: ', e.detail.game,' cat: ', e.detail.cat);
           this.route = '/game/'+e.detail.cat+'/'+e.detail.game;
-
-          this.fire('route', { route: this.route });
+          this.fire('route', { route: this.route, titlecat: 'gay' });
         }
 
 

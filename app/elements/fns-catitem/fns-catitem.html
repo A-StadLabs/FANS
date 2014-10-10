@@ -17,7 +17,7 @@
       Polymer({
         // define element prototype here
         catTapped: function(e, detail, sender){
-          this.fire('tapped', { msg: this.key });
+          this.fire('tapped', { msg: this.key, cat: this.naam });
         }
       });
 

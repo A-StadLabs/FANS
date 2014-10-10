@@ -20,7 +20,8 @@
       Polymer({
         // define element prototype here
         catSelect: function(e, detail, sender){
-          //console.log('cat tapped', detail.msg);
+        //console.log('cat tapped', detail);
+        this.fire('setCat', { cat: e.detail.cat});
         }
       });
 

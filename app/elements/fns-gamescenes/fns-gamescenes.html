@@ -1,0 +1,36 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../../elements/fns-catitem/fns-catitem.html">
+<link rel="import" href="../../elements/fns-category/fns-category.html">
+<link rel="import" href="../../elements/fns-gameplay/fns-gameplay.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
+
+<polymer-element name="fns-gamescenes" attributes="scene">
+  <template>
+    <link rel="stylesheet" href="fns-gamescenes.css">
+    <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" log location="https://asl-ranking.firebaseio.com/categories/"></firebase-element>
+    <core-animated-pages selected="{{scene}}">
+      <section>
+        <template repeat="{{key in keys}}" id="cattemplate">
+          <fns-catitem icon="{{data[key].icon}}" naam="{{data[key].naam}}" key="{{key}}" on-tapped="{{catSelect}}"></fns-catitem>
+        </template>
+      </section>
+      <section>
+          <fns-category cat></fns-category>
+      </section>
+      <section>
+          <fns-gameplay game cat></fns-gameplay>
+      </section>
+    </core-animated-pages>
+  </template>
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        // define element prototype here
+      });
+
+    })();
+  </script>
+</polymer-element>
