@@ -1,0 +1,65 @@
+:host {
+  display: block;
+}
+
+core-icon-button {
+	margin: 5px;
+}
+
+.item.core-selected {
+    background: transparent;
+}
+
+core-icon-button[active]{
+	border: 1px solid black;
+	background-color: red;
+}
+
+.a.core-selected {
+	background-color: #FFB800;
+}
+
+.b.core-selected {
+	background-color: #00cc26;
+}
+
+.c.core-selected {
+	background-color: #b65500;
+}
+
+.d {
+	background-color: #b839ff;
+}
+
+.e {
+	background-color: #9a3100;
+}
+
+.f {
+	background-color: #ffaaca;
+}
+
+.g {
+	background-color: #2ba300;
+}
+
+.h {
+	background-color: #1183ff;
+}
+
+.i {
+	background-color: #690028;
+}
+
+.j {
+	background-color: #ffd609;
+}
+
+.k {
+	background-color: #0080d6;
+}
+
+.l {
+	background-color: #00909a;
+}
+
