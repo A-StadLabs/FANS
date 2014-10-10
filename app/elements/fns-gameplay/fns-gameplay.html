@@ -1,7 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
-<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 
 
@@ -45,8 +45,8 @@
  -->
       <div class="commentstate">
 
-      <!-- <input id="comment" value="{{commentPost}}">
-      <core-icon-button icon="submit" on-tap="{{postit}}">Toevoegen</core-icon-button> -->
+      <input id="comment" value="{{commentPost}}">
+      <paper-button icon="submit" on-tap="{{postit}}" class="addbtn">Toevoegen</paper-button>
       
       <template repeat="{{comm in comments}}">
       <div class="comments">{{comm.data.time}}{{comm.data.comment}}</div>
