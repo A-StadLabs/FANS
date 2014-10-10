@@ -32,9 +32,7 @@
         ready: function(){
           var that = this;
           this.$.newgame.addEventListener('gameStart', function(e){
-            console.log(e.detail.game);
             this.route = '/game/'+e.detail.cat+'/'+e.detail.game;
-            console.log('ROUTE: ', this.route);
             that.$.collapse.close();
             that.fire('route', { route: this.route });
           });
@@ -42,21 +40,16 @@
 
         toggleNewgame: function(){
           this.$.collapse.toggle();
-          console.log('lekker werken', this.$.collapse);
         },
 
         game: function(e){
-          console.log('game-fire: game: '+e.detail.game+' / cat: '+e.detail.cat);
           this.fire('game-play', { game: e.detail.game, cat: e.detail.cat });
         },
 
         catChanged: function(){
-          console.log('categorie in fns-category: ', this.cat);
-          console.log('title: ', this.titel);
         },
 
         handleResponse: function(){
-          console.log('data changed');
         }
 
 

@@ -5,7 +5,7 @@
 <polymer-element name="fns-categories" attributes="">
   <template>
     <link rel="stylesheet" href="fns-categories.css">
-    <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" log location="https://asl-ranking.firebaseio.com/categories/"></firebase-element>
+    <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" location="https://asl-ranking.firebaseio.com/categories/"></firebase-element>
     <div vertical layout center center-justified class="catcontainer">
     <template repeat="{{key in keys}}" id="cattemplate">
       <fns-catitem icon="{{data[key].icon}}" naam="{{data[key].naam}}" key="{{key}}" on-tapped="{{catSelect}}"></fns-catitem>
@@ -20,8 +20,7 @@
       Polymer({
         // define element prototype here
         catSelect: function(e, detail, sender){
-        //console.log('cat tapped', detail);
-        this.fire('setCat', { cat: e.detail.cat});
+          this.fire('setCat', { cat: e.detail.cat});
         }
       });
 

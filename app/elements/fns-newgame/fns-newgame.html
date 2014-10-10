@@ -45,7 +45,6 @@
           this.$.ajax.addEventListener("core-response", 
             function(e) {
               this.response = e.detail.response.name;
-              console.log('response: ', this.response);
               this.fire('gameStart', { cat: that.cat, game: this.response});
             }
           );

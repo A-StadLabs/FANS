@@ -18,7 +18,6 @@
       Polymer({
         // define element prototype here
         gameTap: function(){
-          console.log('game tapped in gameitem: key: ', this.key,' cat: ', this.gamedata.cat);
           this.fire('game-tap', { game: this.key, cat: this.gamedata.cat });
         }
       });
