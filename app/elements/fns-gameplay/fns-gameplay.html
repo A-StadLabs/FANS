@@ -3,7 +3,8 @@
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
-
+<link rel="import" href="../../bower_components/time-ago/src/time-ago.html">
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment-with-locales.min.js"></script>
 
 <polymer-element name="fns-gameplay" attributes="game cat">
   <template>
@@ -49,7 +50,7 @@
       <paper-button icon="submit" on-tap="{{postit}}" class="addbtn">Toevoegen</paper-button>
       
       <template repeat="{{comm in comments}}">
-      <div class="comments">{{comm.data.time}}{{comm.data.comment}}</div>
+      <div class="comments"><time-ago datetime="{{comm.data.time}}"></time-ago>{{comm.data.time}}+02:00 | {{comm.data.comment}}</div>
       </template>
     </div>
 
