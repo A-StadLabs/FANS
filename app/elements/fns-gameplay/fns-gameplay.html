@@ -50,7 +50,7 @@
       <paper-button icon="submit" on-tap="{{postit}}" class="addbtn">Toevoegen</paper-button>
       
       <template repeat="{{comm in comments}}">
-      <div class="comments"><time-ago datetime="{{comm.data.time}}"></time-ago>{{comm.data.time}}+02:00 | {{comm.data.comment}}</div>
+      <div class="comments"><p><time-ago datetime="{{comm.data.time}}" delay="1000"></time-ago></p><p>{{comm.data.comment}}</p></div>
       </template>
     </div>
 
