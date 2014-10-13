@@ -59,6 +59,10 @@
         closegame: function(){
           this.scene = 1;
           this.fire('toggle-toolbar');
+        },
+
+        handleResponse: function(){
+          this.keys.reverse();
         }
       });
 

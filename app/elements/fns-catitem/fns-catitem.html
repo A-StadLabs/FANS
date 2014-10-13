@@ -1,13 +1,15 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../../bower_components/core-item/core-item.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
 
 
 <polymer-element name="fns-catitem" attributes="icon naam key" on-tap="tapped">
   <template>
     <link rel="stylesheet" href="fns-catitem.css">
+    <firebase-element id="gbase" on-data-change="{{handleResponse}}" keys="{{gkeys}}" data="{{gdata}}" log location="https://asl-ranking.firebaseio.com/categories/{{key}}/games/"></firebase-element>
     <div class="catitem" vertical layout center center-justified>
-      {{naam}}
+        <span class="naam" data-badge="{{games}}">{{naam}}</span>
   </div>
   </template>
   <script>
@@ -18,8 +20,10 @@
         // define element prototype here
         tapped: function(){
           this.fire('cat-tap', { key: this.key, naam: this.naam })
+        },
+        handleResponse: function(){
+          this.games = this.gkeys.length;
         }
-
       });
 
     })();
