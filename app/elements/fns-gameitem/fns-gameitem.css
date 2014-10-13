@@ -1,25 +1,27 @@
 :host {
-    -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+
   display: block;
-  background: white;
-  width: 90%;
-  padding: 5px;
-  margin-top: 10px;
-  box-shadow: 0px 2px 2px rgba(0,0,0,0.10);
+/*  background-color: #4D4D4D;
+*/  width: 80%;
+  padding: 10px;
+/*  box-shadow: 0px 2px 2px rgba(0,0,0,0.10);
+*/  color:white;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  font-family: 'Exo 2', sans-serif;
   
 }
 
 .ploeg {
 	width: 34%;
-	font-size: 10px;
+	font-size: 16px;
   font-weight: 200;
-  word-wrap: break-word;
-}
+/*  word-wrap: break-word;
+*/}
 
 .score {
 	width: 14%;
+  font-size: 26px;
+  font-weight: 800;
 }
 
 .left {
@@ -42,11 +44,6 @@
 
 
 
-h1 {
-  color: black;
-  font-size: 30px;
-  font-weight: 300;
-  }
 
 
 

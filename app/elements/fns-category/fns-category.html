@@ -10,12 +10,14 @@
   <template>
     <link rel="stylesheet" href="fns-category.css">
     <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games"></firebase-element>
-    <div vertical layout center>
-      <core-icon-button class="newbtn" on-tap="{{toggleNewgame}}"> Nieuwe game</core-icon-button>
+    <div vertical layout center stretch>
+      <div class="btns" stretch>
+      <div class="top-btns" on-tap="{{toggleNewgame}}" vertical layout center center-justified > Nieuwe game</div>
       <core-overlay id="collapse" layered backdrop transition="core-transition-center" >
         <fns-newgame cat="{{cat}}" titel="{{titel}}" id="newgame"></fns-newgame>
       </core-overlay>
-      <core-icon-button>Rankings</core-icon-button>
+      <div class="top-btns" vertical layout center center-justified>Rankings bekijken</div>
+    </div>
       <h3>Laatste games</h3>
       <template repeat="{{key in keys}}" id="gamestemplate">
       <fns-gameitem gamedata="{{data[key]}}" key="{{key}}" on-game-tap="{{game}}"></fns-gameitem>
