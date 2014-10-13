@@ -1,0 +1,20 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+  <polymer-element name="asl-globals">
+    <script>
+    (function() {
+      var values = {};
+
+      Polymer('asl-globals', {
+        ready: function() {
+           for (var i = 0; i < this.attributes.length; ++i) {
+             var attr = this.attributes[i];
+             values[attr.nodeName] = attr.nodeValue;
+           }
+        },
+        get values() {
+          return values;
+        }
+      });
+    })();
+    </script>
+  </polymer-element>

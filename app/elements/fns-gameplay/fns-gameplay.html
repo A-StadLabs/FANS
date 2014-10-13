@@ -5,6 +5,8 @@
 <link rel="import" href="../../bower_components/core-item/core-item.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../../bower_components/time-ago/src/time-ago.html">
+<link rel="import" href="../../elements/asl-globals/asl-globals.html">
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment-with-locales.min.js"></script>
 
 <polymer-element name="fns-gameplay" attributes="game cat">
@@ -13,8 +15,14 @@
     <firebase-element id="base" on-data-change="{{handleResponse}}" data="{{data}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/"></firebase-element>
       <div horizontal layout>
 
+
         
         <div  vertical layout center class="puntengever">
+
+        <asl-globals id="globals"></asl-globals>
+
+
+
 
         <div horizontal layout start class="ploegen">
         <div class="ploeg1">{{data.ploeg1}}</div>
@@ -24,7 +32,7 @@
 
         <div horizontal layout center center-justified class="scores">
 
-        <div horizontal layout center center-justified class="scorebtns">
+        <div horizontal layout center center-justified class="scorebtns" hidden?="{{isOwner}}">
           <core-item on-tap="{{addPoint1}}" class="addbtn">+</core-item>
           <core-item on-tap="{{removePoint1}}" class="removebtn">-</core-item>
         </div>
@@ -33,7 +41,7 @@
         <div class="streepje2">-</div>
         <div class="score2">{{data.score2}}</div>
 
-        <div horizontal layout center class="scorebtns">
+        <div horizontal layout center class="scorebtns" hidden?="{{isOwner}}">
           <core-item on-tap="{{addPoint2}}" class="addbtn">+</core-item>
           <core-item on-tap="{{removePoint2}}" class="removebtn">-</core-item>
         </div>
@@ -42,12 +50,7 @@
         
         </div>
 
-
-
         </div>
-
-
-
 
     <div class="commstate" vertical layout center>
       <firebase-element id="cbase" on-data-change="{{handleComments}}" keys="{{ckeys}}" data="{{cdata}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/comments/"></firebase-element>
@@ -55,20 +58,21 @@
 
 
       <!-- <div class="commentstate">
+=======
+      <div class="commentstate">
+>>>>>>> FETCH_HEAD
 
       <input id="comment" value="{{commentPost}}">
+      <p>Own: {{data.owner}}</p>
       <paper-button icon="submit" on-tap="{{postit}}" class="addbtn">Toevoegen</paper-button>
       
       <template repeat="{{comm in comments}}">
-      <div class="comments"><p><time-ago datetime="{{comm.data.time}}" delay="1000"></time-ago></p><p>{{comm.data.comment}}</p></div>
+        <div class="comments"><p><time-ago datetime="{{comm.data.time}}" delay="1000"></time-ago></p><p>{{comm.data.comment}}</p></div>
       </template>
     </div> -->
 
     </div>
-
-
-
-            </div>
+  </div>
 
     </core-animated-pages>
   </template>
@@ -80,6 +84,7 @@
         // define element prototype here
         ready: function(){
           this.pageSelect = 0;
+          this.globals = this.$.globals;
         },
 
         toggleScore: function(){
@@ -119,6 +124,7 @@
 
         gameChanged: function(){
           this.pageSelect = 0;
+          this.isOwner = true;
         },
 
         addPoint1: function(){
@@ -143,6 +149,16 @@
           var that = this;
           this.data.score2--;
           that.postLog('Foutje. De nieuwe stand is '+this.data.score1+' - '+this.data.score2+'.'); 
+        },
+
+        handleResponse: function(){
+          console.log('owner: ',this.data.owner);
+          var that = this;
+          console.log('user: ',that.globals.values.user.etag); 
+          if(this.data.owner==that.globals.values.user.etag){
+            console.log('user is owner.');
+            that.isOwner = false;
+          }
         }
       });
 

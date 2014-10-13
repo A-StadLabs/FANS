@@ -3,11 +3,31 @@
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../elements/aos-colorpicker/aos-colorpicker.html">
+<link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-from-right.html">
+<link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../../bower_components/google-signin/google-signin.html">
+<link rel="import" href="../../elements/asl-globals/asl-globals.html">
 
 
 <polymer-element name="fns-newgame" attributes="cat titel">
   <template>
+
     <link rel="stylesheet" href="fns-newgame.css">
+    <asl-globals id="globals"></asl-globals>
+    <core-animated-pages selected="{{gamepages}}" transitions="slide-from-right">
+      <section>
+      <h1>Om een nieuwe game aan te maken moet je aanmelden.</h1>
+      <google-signin width="iconOnly" clientId="886400192732-7e11f689u7hhvqgabmklqugdduimgir4.apps.googleusercontent.com" scopes="profile" id="gsign"></google-signin>
+      <template id="profile" bind="{{ profile }}">
+      <h2>Welkom terug, {{nickname}}.</h2>
+      <img src="{{image.url}}" class="avatar" />
+      <p>{{etag}}</p>
+      <core-icon-button icon="arrow-forward" on-tap="{{verder}}">Ga verder</core-icon-button>
+      </template>
+
+      </section>
+      <section>
+
     <core-ajax id="ajax" url="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/.json" method="POST" on-core-repsonse="{{testje}}"></core-ajax>
     <div vertical layout center center-justified>
 <!--       <h1>Start een nieuwe game</h1>
@@ -19,7 +39,10 @@
     <input id="ploeg2" value="{{ploeg2}}" placeholder="ploeg2" />
     <paper-button on-tap="{{submit}}" stretch>STARTEN</paper-button>
   </div>
-
+  </section>
+  <section>
+  </section>
+</core-animated-pages>
 
   </template>
   <script>
@@ -32,7 +55,7 @@
           var that = this;
           this.data = {};
           this.tijd = new Date();
-          this.data = {"ploeg1": that.ploeg1, "ploeg2": that.ploeg2, "score1": 0, "score2": 0, time: this.tijd, geolocatie: "xy", "cat": that.cat };
+          this.data = {"ploeg1": that.ploeg1, "ploeg2": that.ploeg2, "score1": 0, "score2": 0, time: this.tijd, geolocatie: "xy", "cat": that.cat, "owner": this.userobject.etag };
           this.data = JSON.stringify(this.data);
           that.$.ajax.body = this.data;
           that.$.ajax.go();
@@ -40,6 +63,8 @@
         },
 
         ready: function(){
+          this.globals = this.$.globals;
+          this.gamepages = 0;
           this.gameentry = true;
           var that = this;
           this.$.ajax.addEventListener("core-response", 
@@ -48,7 +73,42 @@
               this.fire('gameStart', { cat: that.cat, game: this.response});
             }
           );
+
+          this.userobject = {};
+
+          var that = this;
+
+          this.addEventListener('google-signin-success', function(e){
+            console.log('test is dit fired?');
+            gapi.client.load('plus', 'v1', function() {
+            // To retreive profile information for a user, use the
+            // people.get API method. For profile info for the currently
+            // authorized user, use the userId value of me.
+            var request = gapi.client.plus.people.get({
+                'userId': 'me'
+            });
+
+            request.execute(function(resp) {
+                // Some useful profile information is now available
+                // via the returned object (resp). For example, we
+                // can discover the displayName, skills and so on.
+                console.log(resp);
+
+                // This data can then be rendered into a template:
+                var t = that.$.profile;
+                t.model = {};
+                t.model.profile = resp;
+                that.userobject = resp;
+                that.globals.values.user = resp;
+                //that.gamepages = 1;
+            });
+        });
+          });
         },
+
+        verder: function(){
+            this.gamepages = 1;
+        }
 
       });
 
