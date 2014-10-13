@@ -12,12 +12,9 @@
   <template>
     <link rel="stylesheet" href="fns-gameplay.css">
     <firebase-element id="base" on-data-change="{{handleResponse}}" data="{{data}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/"></firebase-element>
+
+        <core-icon-button on-tap="{{terug}}" icon="arrow-back"></core-icon-button>
      
-
-
-
-
-        
         <div  horizontal layout center center-justified class="puntengever">
 
         <asl-globals id="globals"></asl-globals>
@@ -58,10 +55,9 @@
       <core-ajax method="POST" id="commPost" handleAs="json" data url="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/comments/.json"></core-ajax>
 
 
-      <!-- <div class="commentstate">
-=======
+
       <div class="commentstate">
->>>>>>> FETCH_HEAD
+
 
       <input id="comment" value="{{commentPost}}">
       <paper-button icon="submit" on-tap="{{postit}}" class="addbtn">Toevoegen</paper-button>
@@ -69,9 +65,9 @@
       <template repeat="{{comm in comments}}">
         <div class="comments"><p><time-ago datetime="{{comm.data.time}}" delay="1000"></time-ago></p><p>{{comm.data.comment}}</p></div>
       </template>
-    </div> -->
+    </div> 
 
-    </div>
+
   </div>
 
     </core-animated-pages>
@@ -92,6 +88,10 @@
           this.pageSelect = 0;
           this.globals = this.$.globals;
           this.tekstGrootte();
+        },
+
+        terug: function(){
+          this.fire('close-gameplay');
         },
 
         toggleScore: function(){

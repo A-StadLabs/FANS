@@ -22,7 +22,7 @@
           <fns-category cat="{{selectedCat}}" titel="{{titel}}" on-game-play="{{gameit}}"></fns-category>
       </section>
       <section>
-          <fns-gameplay game="{{game}}" cat="{{selectedCat}}"></fns-gameplay>
+          <fns-gameplay game="{{game}}" cat="{{selectedCat}}" on-close-gameplay="{{closegame}}"></fns-gameplay>
       </section>
     </core-animated-pages>
   </template>
@@ -54,6 +54,11 @@
           // Toolbar weg? Use this function.
           this.fire('toggle-toolbar');
 
+        },
+
+        closegame: function(){
+          this.scene = 0;
+          this.fire('toggle-toolbar');
         }
       });
 
