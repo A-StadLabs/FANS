@@ -16,9 +16,9 @@
       <core-overlay id="collapse" layered backdrop transition="core-transition-center">
         <fns-newgame cat="{{cat}}" titel="{{titel}}" id="newgame"></fns-newgame>
       </core-overlay>
-      <div class="top-btns" vertical layout center center-justified>Rankings bekijken</div>
+      <!-- <div class="top-btns" vertical layout center center-justified>Rankings bekijken</div> -->
     </div>
-      <h3>Laatste games</h3>
+      <!-- <h3>Laatste games</h3> -->
       <template repeat="{{key in keys}}" id="gamestemplate">
       <fns-gameitem gamedata="{{data[key]}}" key="{{key}}" on-game-tap="{{game}}"></fns-gameitem>
     </div>
@@ -52,6 +52,8 @@
         },
 
         handleResponse: function(){
+          console.log('data changed. Update?');
+          this.keys.reverse();
         }
 
 
