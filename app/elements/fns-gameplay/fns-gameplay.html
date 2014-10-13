@@ -6,7 +6,6 @@
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../../bower_components/time-ago/src/time-ago.html">
 <link rel="import" href="../../elements/asl-globals/asl-globals.html">
-
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment-with-locales.min.js"></script>
 
 <polymer-element name="fns-gameplay" attributes="game cat">
@@ -37,9 +36,9 @@
           <core-item on-tap="{{removePoint1}}" class="removebtn">-</core-item>
         </div>
 
-        <div class="score1">{{data.score1}}</div>
+        <div class="score1" id="fittext">{{data.score1}}</div>
         <div class="streepje2">-</div>
-        <div class="score2">{{data.score2}}</div>
+        <div class="score2" id="fittext2">{{data.score2}}</div>
 
         <div horizontal layout center class="scorebtns" hidden?="{{isOwner}}">
           <core-item on-tap="{{addPoint2}}" class="addbtn">+</core-item>
@@ -75,6 +74,12 @@
 
     </core-animated-pages>
   </template>
+  <script src="../../vendor/FitText.js-master/fittext.js"></script>
+
+    <script type="text/javascript">
+    
+    console.log('werkting');
+  </script>
   <script>
     (function () {
       'use strict';
@@ -84,6 +89,7 @@
         ready: function(){
           this.pageSelect = 0;
           this.globals = this.$.globals;
+          this.tekstGrootte();
         },
 
         toggleScore: function(){
@@ -113,6 +119,7 @@
 
         handleComments: function(){
           this.comments = [];
+          this.tekstGrootte();
           //this.comments = this.data;
           for (var i = this.ckeys.length - 1; i >= 0; i--) {
             var j = this.ckeys[i];
@@ -122,6 +129,7 @@
         },
 
         gameChanged: function(){
+          this.tekstGrootte();
           this.pageSelect = 0;
           this.isOwner = true;
         },
@@ -150,7 +158,13 @@
           that.postLog('Foutje. De nieuwe stand is '+this.data.score1+' - '+this.data.score2+'.'); 
         },
 
+        tekstGrootte: function(){
+          fitText(this.$.fittext, 0.4);
+          fitText(this.$.fittext2, 0.4);
+        },
+
         handleResponse: function(){
+          this.tekstGrootte();
           console.log('owner: ',this.data.owner);
           var that = this;
           console.log('user: ',that.globals.values.user.etag); 
@@ -163,4 +177,5 @@
 
     })();
   </script>
+
 </polymer-element>
