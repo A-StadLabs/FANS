@@ -1,57 +1,26 @@
 :host {
-
   display: block;
-/*  background-color: #4D4D4D;
-*/  width: 80%;
-  padding: 10px;
-/*  box-shadow: 0px 2px 2px rgba(0,0,0,0.10);
-*/  color:white;
-  border-bottom: 1px solid rgba(255,255,255,0.25);
+  width: 90%;
+}
+
+
+.gameitem {
+  background-color: #4D4D4D;
+  padding: 20px;
+  margin: 10px 10px 0px 10px;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.10);
+  color:white;
   font-family: 'Exo 2', sans-serif;
-  
 }
 
 .ploeg {
-	width: 34%;
 	font-size: 16px;
-  font-weight: 200;
-/*  word-wrap: break-word;
-*/}
+  font-weight: 400;
+  color:#CCCCCC;
+}
 
 .score {
-	width: 14%;
   font-size: 26px;
   font-weight: 800;
 }
-
-.left {
-	text-align: left;
-}
-
-.right {
-	text-align: right;
-}
-
-.streep {
-	width: 4%;
-	text-align: center;
-  font-size: 20px;
-  font-weight: 100;
-  color: black; 
-}
-
-
-
-
-
-
-
-
-
-/*.ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
-    -ms-text-overflow: ellipsis;
-}*/

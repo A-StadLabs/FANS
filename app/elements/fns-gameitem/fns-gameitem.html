@@ -3,13 +3,16 @@
 <polymer-element name="fns-gameitem" attributes="gamedata key" on-tap="{{gameTap}}">
   <template>
   <link rel="stylesheet" href="fns-gameitem.css">
-  <div horizontal layout center center-justified>
-    <div class="ploeg right">{{gamedata.ploeg1}}</div>
-    <div class="score right">{{gamedata.score1}}</div>
-    <span class="streep">|</span>
-    <div class="score left">{{gamedata.score2}}</div>
-    <div class="ploeg left">{{gamedata.ploeg2}}</div>
+<div vertical layout class="gameitem">
+  <div horizontal layout center>
+    <div class="ploeg" flex>{{gamedata.ploeg1}}</div>
+    <div class="score" self-end>{{gamedata.score1}}</div>
   </div>
+  <div horizontal layout center>
+    <div class="ploeg" flex>{{gamedata.ploeg2}}</div>
+    <div class="score"self-end>{{gamedata.score2}}</div>
+  </div>
+</div>
   </template>
   <script>
     (function () {
