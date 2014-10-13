@@ -1,7 +1,8 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
-<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/core-item/core-item.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../../bower_components/time-ago/src/time-ago.html">
 <link rel="import" href="../../elements/asl-globals/asl-globals.html">
@@ -12,39 +13,54 @@
   <template>
     <link rel="stylesheet" href="fns-gameplay.css">
     <firebase-element id="base" on-data-change="{{handleResponse}}" data="{{data}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/"></firebase-element>
+      <div horizontal layout>
+
+
+        
+        <div  vertical layout center class="puntengever">
 
         <asl-globals id="globals"></asl-globals>
 
 
-        <div  vertical layout center class="breeeeed">
 
 
-        <div  horizontal layout end class="breeeeed">
-          <div class="ploeg"><h1>{{data.ploeg1}}</h1></div>
-          <div class="ploeg"><h1>{{data.ploeg2}}</h1></div>
+        <div horizontal layout start class="ploegen">
+        <div class="ploeg1">{{data.ploeg1}}</div>
+        <div class="streepje">vs.</div>
+        <div class="ploeg2">{{data.ploeg2}}</div>
         </div>
 
+        <div horizontal layout center center-justified class="scores">
 
-        <div horizontal layout center class="breeeeed">
+        <div horizontal layout center center-justified class="scorebtns" hidden?="{{isOwner}}">
+          <core-item on-tap="{{addPoint1}}" class="addbtn">+</core-item>
+          <core-item on-tap="{{removePoint1}}" class="removebtn">-</core-item>
+        </div>
 
-          <div vertical layout class="pointbtns" hidden?="{{isOwner}}">
-            <core-icon-button icon="expand-less" on-tap="{{addPoint1}}" self-end class="pointbtn"></core-icon-button>
-            <core-icon-button icon="expand-more" on-tap="{{removePoint1}}" self-end class="pointbtn"></core-icon-button>
-          </div>
-        <h2 class="score1" flex>{{data.score1}}</h2>
-        <div class="streepje">|</div>
-        <h2 class="score2" flex>{{data.score2}}</h2>
-          <div vertical layout class="pointbtns" hidden?="{{isOwner}}">
-            <core-icon-button icon="expand-less" on-tap="{{addPoint2}}" self-end class="pointbtn"></core-icon-button>
-            <core-icon-button icon="expand-more" on-tap="{{removePoint2}}" self-end class="pointbtn"></core-icon-button>
-          </div>
+        <div class="score1">{{data.score1}}</div>
+        <div class="streepje2">-</div>
+        <div class="score2">{{data.score2}}</div>
+
+        <div horizontal layout center class="scorebtns" hidden?="{{isOwner}}">
+          <core-item on-tap="{{addPoint2}}" class="addbtn">+</core-item>
+          <core-item on-tap="{{removePoint2}}" class="removebtn">-</core-item>
+        </div>
+
+        </div>
+        
+        </div>
+
         </div>
 
     <div class="commstate" vertical layout center>
       <firebase-element id="cbase" on-data-change="{{handleComments}}" keys="{{ckeys}}" data="{{cdata}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/comments/"></firebase-element>
       <core-ajax method="POST" id="commPost" handleAs="json" data url="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/comments/.json"></core-ajax>
 
+
+      <!-- <div class="commentstate">
+=======
       <div class="commentstate">
+>>>>>>> FETCH_HEAD
 
       <input id="comment" value="{{commentPost}}">
       <paper-button icon="submit" on-tap="{{postit}}" class="addbtn">Toevoegen</paper-button>
@@ -52,7 +68,7 @@
       <template repeat="{{comm in comments}}">
         <div class="comments"><p><time-ago datetime="{{comm.data.time}}" delay="1000"></time-ago></p><p>{{comm.data.comment}}</p></div>
       </template>
-    </div>
+    </div> -->
 
     </div>
   </div>
