@@ -8,10 +8,12 @@
   <template>
     <link rel="stylesheet" href="fns-gamestage.css">
 
-    <core-header-panel fit mode="waterfall">
+
+    <core-header-panel hidden?="{{toolbar}}" fit mode="waterfall">
       <core-toolbar vertical layout center center-justified on-tap="{{home}}"><div><h1><span class="titleadd">{{titlecat}}</span>FANS</h1><p class="red">een a-stadlabs experiment</p></div></core-toolbar>
+
       <div main>
-      <fns-gamescenes scene="{{scene}}" on-set-tit="{{setTitle}}" id="gamescenes" fit></fns-gamescenes>
+      <fns-gamescenes scene="{{scene}}" on-set-tit="{{setTitle}}" id="gamescenes" fit on-toggle-toolbar="{{toggleToolbar}}"></fns-gamescenes>
       </div>
 </core-header-panel>
   </template>
@@ -26,6 +28,10 @@
         // define element prototype here
         setTitle: function(e){
           this.titlecat = e.detail.title;
+        },
+
+        toggleToolbar: function(){
+          this.toolbar = !this.toolbar;
         },
 
         home: function(){

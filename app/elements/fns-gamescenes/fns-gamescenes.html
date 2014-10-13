@@ -6,20 +6,17 @@
 <link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
 <link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-from-right.html">
 
-
 <polymer-element name="fns-gamescenes" attributes="scene">
   <template>
     <link rel="stylesheet" href="fns-gamescenes.css">
     <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" log location="https://asl-ranking.firebaseio.com/categories/"></firebase-element>
     <core-animated-pages selected="{{scene}}" transitions="slide-from-right">
       <section>
-                  <div vertical layout center center-justified class="catcontainer">
-
-        <template repeat="{{key in keys}}" id="cattemplate">
-          <fns-catitem icon="{{data[key].icon}}" naam="{{data[key].naam}}" key="{{key}}" on-cat-tap="{{catSelect}}"></fns-catitem>
-        </template>
-                </div>
-
+        <div vertical layout center center-justified class="catcontainer">
+          <template repeat="{{key in keys}}" id="cattemplate">
+            <fns-catitem icon="{{data[key].icon}}" naam="{{data[key].naam}}" key="{{key}}" on-cat-tap="{{catSelect}}"></fns-catitem>
+          </template>
+        </div>
       </section>
       <section>
           <fns-category cat="{{selectedCat}}" titel="{{titel}}" on-game-play="{{gameit}}"></fns-category>
@@ -53,6 +50,10 @@
           this.scene = 2;
           this.game = e.detail.game;
           this.cat = e.detail.key;
+
+          // Toolbar weg? Use this function.
+          // this.fire('toggle-toolbar');
+
         }
       });
 

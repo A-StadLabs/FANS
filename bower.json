@@ -6,7 +6,8 @@
     "paper-elements": "Polymer/paper-elements#^0.4.0",
     "polymer": "Polymer/polymer#^0.4.0",
     "app-router": "~1.0.0",
-    "firebase-element": "Polymer/firebase-element#~0.4.2"
+    "firebase-element": "Polymer/firebase-element#~0.4.2",
+    "google-signin": "~0.1.0"
   },
   "devDependencies": {
     "polymer-test-tools": "Polymer/polymer-test-tools#^0.4.0"
