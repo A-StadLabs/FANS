@@ -20,12 +20,15 @@
 
         <asl-globals id="globals"></asl-globals>
 
+
         <input value="{{shareURL}}" onClick="this.select();">
+
+
 
 <div vertical layout center flex>
         <div horizontal layout center center-justified class="ploegen">
           <div class="ploeg1" flex id="fittext3">{{data.ploeg1}}</div>
-          <div class="streepje">vs.</div>
+          <div class="streepje" id="fittext5">vs.</div>
           <div class="ploeg2" flex id="fittext4">{{data.ploeg2}}</div>      
         </div>
 
@@ -37,12 +40,12 @@
               <core-icon-button icon="expand-less" on-tap="{{addPoint1}}" class="addbtn"></core-icon-button>
               <core-icon-button icon="expand-more" on-tap="{{removePoint1}}" class="removebtn"></core-icon-button>
             </div> 
-            <div class="datascore1">{{data.score1}}</div>
+            <div class="datascore1" on-tap="{{addPoint1}}">{{data.score1}}</div>
             </div>
-            <div class="streepje2">-</div>  
+            <div class="streepje2" id="fittext6">-</div>  
 
             <div class="score2" id="fittext2" horizontal layout center>
-              <div class="datascore2">{{data.score2}}</div>
+              <div class="datascore2" on-tap="{{addPoint2}}">{{data.score2}}</div>
               <div hidden?="{{isOwner}}">
               <core-icon-button icon="expand-less" on-tap="{{addPoint2}}" class="addbtn"></core-icon-button>
               <core-icon-button icon="expand-more" on-tap="{{removePoint2}}" class="removebtn"></core-icon-button>
@@ -179,6 +182,8 @@
           fitText(this.$.fittext2, 0.2);
           fitText(this.$.fittext3, 0.8);
           fitText(this.$.fittext4, 0.8);
+          fitText(this.$.fittext5, 0.4);
+          fitText(this.$.fittext6, 0.2);
 
         },
 

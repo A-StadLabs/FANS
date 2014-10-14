@@ -14,6 +14,7 @@ core-toolbar {
 
 core-toolbar h1 {
   color: white;
+  margin: 10px auto;
   font-size: 40px;
   font-weight: 800;
   line-height: 16px;
@@ -35,6 +36,7 @@ core-toolbar h1 {
   font-weight: 500;
  	line-height: 8px;
  	font-size: 12px;
+  margin-top: 25px;
  }
 
 #gamescenes {
