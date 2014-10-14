@@ -17,6 +17,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <link rel="import" href="elements/fns-gamestage/fns-gamestage.html">
+  <link rel="import" href="bower_components/app-router/app-router.html">
 
   <link href='//fonts.googleapis.com/css?family=Alfa+Slab+One|Titillium+Web:400,900,200,200italic,300,300italic,400italic,600,700,600italic,700italic|Exo+2:700,300italic,100italic,200italic,600,200,900italic,500italic,800,300,400,700italic,600italic,500,800italic,100,400italic,900' rel='stylesheet' type='text/css'>
 
@@ -25,7 +26,12 @@
 
 <body unresolved fullbleed>
 
-<fns-gamestage id="stage"></fns-gamestage>
+<app-router>
+<app-route path="/" import="../../elements/fns-gamestage/fns-gamestage.html"></app-route>
+<app-route path="/play/:cat/:game/" import="../../elements/fns-gameplay/fns-gameplay.html"></app-route>
+<!-- <fns-gamestage id="stage"></fns-gamestage> -->
+
+</app-router>
 
 
   <!-- build:js scripts/app.js -->
