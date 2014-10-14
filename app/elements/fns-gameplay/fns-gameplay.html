@@ -16,9 +16,11 @@
 
         <core-icon-button on-tap="{{terug}}" icon="arrow-back"></core-icon-button>
      
-        <div  horizontal layout center center-justified class="puntengever">
+        <div horizontal layout center center-justified class="puntengever">
 
         <asl-globals id="globals"></asl-globals>
+
+        <input value="{{shareURL}}" onClick="this.select();">
 
 
 
@@ -81,7 +83,6 @@
       </template>
     </div> 
 
-
   </div>
 
     </core-animated-pages>
@@ -96,9 +97,16 @@
     (function () {
       'use strict';
 
+      function randomString(length, chars) {
+    var result = '';
+    for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+    return result;
+}
+
       Polymer({
         // define element prototype here
         ready: function(){
+          console.log('cat: ', this.cat, ' game: ', this.game);
           this.pageSelect = 0;
           this.globals = this.$.globals;
           this.tekstGrootte();
@@ -144,6 +152,7 @@
         },
 
         gameChanged: function(){
+          this.shareURL = 'https://asl-ranking.firebaseapp.com/#/play/'+this.cat+'/'+this.game+'/';
           this.tekstGrootte();
           this.pageSelect = 0;
           this.isOwner = true;
