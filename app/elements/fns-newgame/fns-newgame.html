@@ -16,15 +16,19 @@
     <asl-globals id="globals"></asl-globals>
     <core-animated-pages selected="{{gamepages}}" transitions="slide-from-right">
       <section>
-      <h1>Om een nieuwe game aan te maken moet je aanmelden.</h1>
-      <google-signin width="iconOnly" clientId="886400192732-7e11f689u7hhvqgabmklqugdduimgir4.apps.googleusercontent.com" scopes="profile" id="gsign"></google-signin>
+            <div vertical layout center fit>
+
+      <h3>Om een nieuwe game aan te maken moet je aanmelden.</h3>
+      <div>
+      <google-signin clientId="886400192732-7e11f689u7hhvqgabmklqugdduimgir4.apps.googleusercontent.com" scopes="profile" id="gsign"></google-signin>
+    </div>
       <template id="profile" bind="{{ profile }}">
       <h2>Welkom terug, {{nickname}}.</h2>
       <img src="{{image.url}}" class="avatar" />
-      <p>{{etag}}</p>
-      <core-icon-button icon="arrow-forward" on-tap="{{verder}}">Ga verder</core-icon-button>
+<!--       <p>{{etag}}</p>
+ -->      <core-icon-button icon="arrow-forward" on-tap="{{verder}}">Ga verder</core-icon-button>
       </template>
-
+</div>
       </section>
       <section>
 
