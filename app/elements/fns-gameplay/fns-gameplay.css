@@ -37,16 +37,27 @@
 }
 
 .score1 {
-	width: 34%;
+	width: 44%;
 	text-align: right;
-}
+/*	background-color: blue;
+*/}
 
 
 .score2 {
-	width: 34%;
+	width: 44%;
 	text-align: left;
 }
 
+
+
+.datascore1 {
+	margin-left: 15%;
+}
+
+
+.datascore2 {
+	margin-right: 15%;
+}
 
 
 .streepje {
@@ -63,30 +74,31 @@
 	font-size: 30px;
 }
 
-.scorebtns {
-	width: 10%;
-}
 
 .addbtn {
   display: block;
-  background-color: #0066F5;
-  padding: 5px;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 400;
+  border-radius: 0px;
+  width: 30px;
+      padding: 0px;
+
 }
 
+.addbtn /deep/ core-icon[role=img] {
+	  color: white;
+	height: 40px;
+	width: 40px;
+}
 
 .removebtn {
   display: block;
-  background-color: #808080;
-  padding: 5px;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 400;
+  padding: 0px;
 }
 
-
+.removebtn /deep/ core-icon[role=img] {
+	  color: #808080;
+	height: 40px;
+	width: 40px;
+}
 
 
 

@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/core-item/core-item.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../../bower_components/time-ago/src/time-ago.html">
@@ -19,34 +20,47 @@
 
         <asl-globals id="globals"></asl-globals>
 
-        <div class="scorebtns" hidden?="{{isOwner}}" >
-              <core-icon-button icon="add" on-tap="{{addPoint1}}" class="addbtn"></core-icon-button>
-              <core-icon-button icon="remove" on-tap="{{removePoint1}}" class="removebtn"></core-icon-button>
-            </div>
+
 
 <div vertical layout center flex>
         <div horizontal layout center center-justified class="ploegen">
-          <div class="ploeg1" flex>{{data.ploeg1}}</div>
+          <div class="ploeg1" flex id="fittext3">{{data.ploeg1}}</div>
           <div class="streepje">vs.</div>
-          <div class="ploeg2" flex>{{data.ploeg2}}</div>      
+          <div class="ploeg2" flex id="fittext4">{{data.ploeg2}}</div>      
         </div>
 
-        <div horizontal layout center center-justified class="scores">           
-            <div class="score1" id="fittext">
+        <div horizontal layout center class="scores"> 
+
+<!--             <div class="score1" id="fittext" horizontal layout>
+              <div hidden?="{{isOwner}}" >
+              <core-icon-button icon="expand-less" on-tap="{{addPoint1}}" class="addbtn"></core-icon-button>
+              <core-icon-button icon="expand-more" on-tap="{{removePoint1}}" class="removebtn"></core-icon-button>
+              </div>
               {{data.score1}}
+            </div> -->
+<div class="score1" id="fittext" horizontal layout center>
+  <div flex></div>
+              <div hidden?="{{isOwner}}" end-justified>
+              <core-icon-button icon="expand-less" on-tap="{{addPoint1}}" class="addbtn"></core-icon-button>
+              <core-icon-button icon="expand-more" on-tap="{{removePoint1}}" class="removebtn"></core-icon-button>
+            </div> 
+            <div class="datascore1">{{data.score1}}</div>
             </div>
-            <div class="streepje2">-</div>   
-            <div class="score2" id="fittext2">
-              {{data.score2}}
+            <div class="streepje2">-</div>  
+
+            <div class="score2" id="fittext2" horizontal layout center>
+              <div class="datascore2">{{data.score2}}</div>
+              <div hidden?="{{isOwner}}">
+              <core-icon-button icon="expand-less" on-tap="{{addPoint2}}" class="addbtn"></core-icon-button>
+              <core-icon-button icon="expand-more" on-tap="{{removePoint2}}" class="removebtn"></core-icon-button>
+            </div> 
             </div>
+
+
 
         </div>
 </div>
 
-        <div class="scorebtns" hidden?="{{isOwner}}" >
-              <core-icon-button icon="add" on-tap="{{addPoint2}}" class="addbtn"></core-icon-button>
-              <core-icon-button icon="remove" on-tap="{{removePoint2}}" class="removebtn"></core-icon-button>
-            </div>
 
         </div>
 
@@ -60,7 +74,7 @@
 
 
       <input id="comment" value="{{commentPost}}">
-      <paper-button icon="submit" on-tap="{{postit}}" class="addbtn">Toevoegen</paper-button>
+      <paper-button icon="submit" on-tap="{{postit}}" >Toevoegen</paper-button>
       
       <template repeat="{{comm in comments}}">
         <div class="comments"><p><time-ago datetime="{{comm.data.time}}" delay="1000"></time-ago></p><p>{{comm.data.comment}}</p></div>
@@ -162,6 +176,9 @@
         tekstGrootte: function(){
           fitText(this.$.fittext, 0.2);
           fitText(this.$.fittext2, 0.2);
+          fitText(this.$.fittext3, 0.8);
+          fitText(this.$.fittext4, 0.8);
+
         },
 
         handleResponse: function(){
