@@ -11,7 +11,7 @@
     
 
     <core-header-panel fit mode="waterfall">
-      <core-toolbar hidden?="{{toolbar}}" vertical layout center center-justified on-tap="{{home}}"><div><h1><span class="titleadd">{{titlecat}}</span>FANS</h1><p class="red">een a-stadlabs experiment</p></div></core-toolbar>
+      <core-toolbar hidden?="{{toolbar}}" vertical layout center center-justified on-tap="{{home}}"><div class="titels"><h1><span class="titleadd">{{titlecat}}</span><br>FANS</h1><p hidden?="{{labsPromo}}" class="red">een a-stadlabs experiment</p></div></core-toolbar>
       <div main>
       <fns-gamescenes scene="{{scene}}" on-set-tit="{{setTitle}}" id="gamescenes" fit on-toggle-toolbar="{{toggleToolbar}}"></fns-gamescenes>
       </div>
@@ -24,10 +24,15 @@
       Polymer({
         ready: function(){
           this.scene = 0;
+          this.labsPromo = false;
+          this.titlecat = '';
+
+
         },
         // define element prototype here
         setTitle: function(e){
           this.titlecat = e.detail.title;
+          this.labsPromo = true;
         },
 
         toggleToolbar: function(){
@@ -37,6 +42,8 @@
         home: function(){
           this.scene = 0;
           this.titlecat = '';
+          this.labsPromo = false;
+
         }
 
       });

@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/core-item/core-item.html">
+<link rel="import" href="../../bower_components/core-overlay/core-overlay.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../../bower_components/time-ago/src/time-ago.html">
 <link rel="import" href="../../elements/asl-globals/asl-globals.html">
@@ -14,14 +15,21 @@
   <link rel="stylesheet" href="fns-gameplay.css">
   <firebase-element id="base" on-data-change="{{handleResponse}}" data="{{data}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/"></firebase-element>
 
-  <core-icon-button on-tap="{{terug}}" icon="home"></core-icon-button>
+  <div horizontal layout end-justified><core-icon-button on-tap="{{terug}}" icon="home" class="topcontrols" self-end></core-icon-button><core-icon-button on-tap="{{toggleShare}}" icon="menu" class="topcontrols" self-end></core-icon-button></div>
+
+
+<core-overlay id="collapseshare" layered backdrop transition="core-transition-center">
+<div class="sharer"><p>Deel deze game:</p><input flex value="{{shareURL}}" onClick="this.select();" class="URLfield"></div>
+      </core-overlay>
+
+  
 
   <div horizontal layout center center-justified class="puntengever">
 
     <asl-globals id="globals"></asl-globals>
 
 
-       <!--  <input value="{{shareURL}}" onClick="this.select();">
+       <!--  
      -->
 
 
@@ -59,13 +67,17 @@
     <firebase-element id="cbase" on-data-change="{{handleComments}}" keys="{{ckeys}}" data="{{cdata}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/comments/"></firebase-element>
     <core-ajax method="POST" id="commPost" handleAs="json" data url="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/comments/.json"></core-ajax>
 
-    <div class="commentstate">
-      <img src="{{user.image.url}}" class="avatar" />
-      <input id="comment" value="{{commentPost}}">
+    <div class="commentstate" vertical layout center>
+
+      <div class="eigencomment" vertical layout>
+      <div horizontal layout center>
+        <img src="{{user.image.url}}" class="avatar" />
+        <input flex id="comment" value="{{commentPost}}" placeholder="Jouw comment" />
+      </div>
       <paper-button icon="submit" on-tap="{{postit}}" >Toevoegen</paper-button>
-      
+      </div>
       <template repeat="{{comm in comments}}" >
-        <div class="comments"><p><time-ago datetime="{{comm.data.time}}" delay="1000"></time-ago></p><img src="{{comm.data.avatar}}" class="avatar" /><p>{{comm.data.nick}}</p><p>{{comm.data.comment}}</p></div>
+        <!-- <div class="comments"><p><time-ago datetime="{{comm.data.time}}" delay="1000"></time-ago></p><img src="{{comm.data.avatar}}" class="avatar" /><p>{{comm.data.nick}}</p><p>{{comm.data.comment}}</p></div> -->
       </template>
     </div> 
   </div>
@@ -97,11 +109,8 @@
           window.location = '/';
         },
 
-        toggleScore: function(){
-          this.pageSelect = 0;
-        },
-        toggleLog: function(){
-          this.pageSelect = 1;
+        toggleShare: function(){
+          this.$.collapseshare.toggle();
         },
 
         postit: function(){
@@ -170,7 +179,7 @@
           fitText(this.$.fittext2, 0.2);
           fitText(this.$.fittext3, 0.8);
           fitText(this.$.fittext4, 0.8);
-          fitText(this.$.fittext5, 0.4);
+          fitText(this.$.fittext5, 0.2);
           fitText(this.$.fittext6, 0.2);
 
         },

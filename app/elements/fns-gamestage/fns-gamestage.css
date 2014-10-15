@@ -8,8 +8,8 @@ body {
 
 core-toolbar {
   background: #333333;
-  height: 100px;
   text-align: center;
+  min-height: 120px;
 }
 
 core-toolbar h1 {
@@ -21,9 +21,29 @@ core-toolbar h1 {
   text-shadow: 2px 2px 6px rgba(0,0,0,0.25);
 }
 
+.titels {
+  display: block;
+}
+
+
  .titleadd {
-  color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.15);
  	text-transform: uppercase;
+  font-size: 40px; 
+  text-shadow: none;
+  display: block;
+
+/*  transition:All 5s ease;
+-webkit-transition:All 5s ease;
+-moz-transition:All 5s ease;
+-o-transition:All 5s ease;
+
+transform: translate(10px);
+-webkit-transform: translate(10px);
+-moz-transform: translate(10px);
+-o-transform: translate(10px);
+-ms-transform: translate(10px);*/
+
  }
 
  .red {
