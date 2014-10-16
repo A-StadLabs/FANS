@@ -49,11 +49,13 @@
             <core-icon-button icon="expand-more" on-tap="{{removePoint1}}" class="removebtn"></core-icon-button>
           </div> 
           <div class="datascore1" on-tap="{{addPoint1}}">{{data.score1}}</div>
+          <img src="{{data.ploeg1av}}">
         </div>
         <div class="streepje2" id="fittext6">-</div>  
 
         <div class="score2" id="fittext2" horizontal layout center>
           <div class="datascore2" on-tap="{{addPoint2}}">{{data.score2}}</div>
+          <img src="{{data.ploeg2av}}">
           <div hidden?="{{isOwner}}">
             <core-icon-button icon="expand-less" on-tap="{{addPoint2}}" class="addbtn"></core-icon-button>
             <core-icon-button icon="expand-more" on-tap="{{removePoint2}}" class="removebtn"></core-icon-button>
