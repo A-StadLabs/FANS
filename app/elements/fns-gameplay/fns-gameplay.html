@@ -9,6 +9,8 @@
 <link rel="import" href="../../bower_components/time-ago/src/time-ago.html">
 <link rel="import" href="../../elements/asl-globals/asl-globals.html">
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment-with-locales.min.js"></script>
+<script src="../../vendor/FitText.js-master/fittext.js"></script>
+
 
 <polymer-element name="fns-gameplay" attributes="game cat">
 <template>
@@ -66,6 +68,7 @@
   <div class="commstate" vertical layout center>
     <firebase-element id="cbase" on-data-change="{{handleComments}}" keys="{{ckeys}}" data="{{cdata}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/comments/"></firebase-element>
     <core-ajax method="POST" id="commPost" handleAs="json" data url="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/comments/.json"></core-ajax>
+    <core-ajax method="POST" id="commPost2" handleAs="json" data url="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/{{game}}/comments/.json"></core-ajax>
 
     <div class="commentstate" vertical layout center>
 
@@ -74,17 +77,16 @@
         <img src="{{user.image.url}}" class="avatar" />
         <input flex id="comment" value="{{commentPost}}" placeholder="Jouw comment" />
       </div>
-      <paper-button icon="submit" on-tap="{{postit}}" >Toevoegen</paper-button>
+      <div class="btns" self-end horizontal layout center center-justified on-tap="{{postit}}" >toevoegen</div>
       </div>
       <template repeat="{{comm in comments}}" >
-        <!-- <div class="comments"><p><time-ago datetime="{{comm.data.time}}" delay="1000"></time-ago></p><img src="{{comm.data.avatar}}" class="avatar" /><p>{{comm.data.nick}}</p><p>{{comm.data.comment}}</p></div> -->
+        <div class="comments"><p><time-ago datetime="{{comm.data.time}}" delay="1000"></time-ago></p><img src="{{comm.data.avatar}}" class="avatar" /><p>{{comm.data.nick}}</p><p>{{comm.data.comment}}</p></div>
       </template>
     </div> 
   </div>
 
 </core-animated-pages>
 </template>
-<script src="../../vendor/FitText.js-master/fittext.js"></script>
 
 <script>
   (function () {
@@ -127,13 +129,13 @@
           this.time = new Date();
           this.comm = { 'comment': txt, 'nick': 'system', 'avatar': 'system.png', 'time': this.time };
           this.comm = JSON.stringify(this.comm);
-          that.$.commPost.body = this.comm;
-          that.$.commPost.go();
+          that.$.commPost2.body = this.comm;
+          that.$.commPost2.go();
         },
 
         handleComments: function(){
           this.comments = [];
-          this.tekstGrootte();
+          // this.tekstGrootte();
           //this.comments = this.data;
           for (var i = this.ckeys.length - 1; i >= 0; i--) {
             var j = this.ckeys[i];
@@ -143,9 +145,9 @@
 
         gameChanged: function(){
           this.user = this.$.globals.values.user;
-          console.log('usertje: ',this.user);
+          // console.log('usertje: ',this.user);
           this.shareURL = 'https://asl-ranking.firebaseapp.com/#/play/'+this.cat+'/'+this.game+'/';
-          this.tekstGrootte();
+          // this.tekstGrootte();
           this.pageSelect = 0;
           this.isOwner = true;
         },
@@ -186,11 +188,11 @@
 
         handleResponse: function(){
           this.tekstGrootte();
-          console.log('owner: ',this.data.owner);
+          // console.log('owner: ',this.data.owner);
           var that = this;
-          console.log('user: ',that.globals.values.user.etag); 
+          // console.log('user: ',that.globals.values.user.etag); 
           if(this.data.owner==that.globals.values.user.etag){
-            console.log('user is owner.');
+            // console.log('user is owner.');
             that.isOwner = false;
           }
         }
