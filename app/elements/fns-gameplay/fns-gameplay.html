@@ -125,7 +125,7 @@
         postLog: function(txt){
           var that = this;
           this.time = new Date();
-          this.comm = { 'comment': txt, 'time': this.time };
+          this.comm = { 'comment': txt, 'nick': 'system', 'avatar': 'system.png', 'time': this.time };
           this.comm = JSON.stringify(this.comm);
           that.$.commPost.body = this.comm;
           that.$.commPost.go();
