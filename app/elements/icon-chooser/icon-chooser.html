@@ -1,0 +1,35 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../../elements/fans-icons.html">
+
+<polymer-element name="icon-chooser" attributes="">
+  <template>
+    <link rel="stylesheet" href="icon-chooser.css">
+
+    <core-icon style="fill: {{kleur}}; background-color: {{kleur2}};" icon="fans:ufo"></core-icon>
+    <core-icon icon="menu"></core-icon>
+    <core-icon icon="menu"></core-icon>
+    <core-icon icon="menu"></core-icon>
+    <core-icon icon="menu"></core-icon>
+    <core-icon icon="menu"></core-icon>
+    <core-icon icon="menu"></core-icon>
+    <core-icon icon="menu"></core-icon>
+    <core-icon icon="menu"></core-icon>
+    <core-icon icon="menu"></core-icon>
+    <core-icon icon="add"></core-icon>
+
+    <p>Kies een voor- en achtergrondkleur</p>
+    <input value="{{kleur}}">
+    <input value="{{kleur2}}">
+  </template>
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        // define element prototype here
+      });
+
+    })();
+  </script>
+</polymer-element>

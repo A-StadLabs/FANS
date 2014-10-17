@@ -24,8 +24,10 @@ input {
 	margin-bottom: 6px;
 	color: #0066F5;
 	font-size: 14px;
+}
 
-
+icon-chooser {
+	width: 200px;
 }
 
 paper-button {

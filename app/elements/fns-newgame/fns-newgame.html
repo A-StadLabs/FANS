@@ -9,7 +9,7 @@
 <link rel="import" href="../../bower_components/google-signin/google-signin.html">
 <link rel="import" href="../../elements/asl-globals/asl-globals.html">
 <link rel="import" href="../../elements/file-upload/file-upload.html">
-
+<link rel="import" href="../../elements/icon-chooser/icon-chooser.html">
 
 <polymer-element name="fns-newgame" attributes="cat titel">
   <template>
@@ -39,25 +39,28 @@
 
       </section>
       <section>
-
+      <!-- Ploeg 1 invoeren -->
     <core-ajax id="ajax" url="https://asl-ranking.firebaseio.com/categories/{{cat}}/games/.json" method="POST" on-core-repsonse="{{testje}}"></core-ajax>
     <div vertical layout center class="bigscene">
-<!--       <h1>Start een nieuwe game</h1>
-      <small>in cat {{cat}}</small> -->
-    <small>Geef hier de deelnemers op</small>
+    <small>Team 1</small>
     <input id="ploeg1" value="{{ploeg1}}" placeholder="ploeg1" />
     <file-upload id="ploeg1av" imgval="{{ploeg1av}}"></file-upload>
-<!--     <aos-colorpicker></aos-colorpicker>-->
+    <icon-chooser></icon-chooser>
+  </div>
+      <div class="btns" vertical layout center center-justified>
+      <div on-tap="{{submit}}">Starten</div>
+      </div>
+  </section>
+  <!-- ploeg 2 invoeren -->
+  <section>
+       <div vertical layout center class="bigscene">
+    <small>Team 2</small>
     <input id="ploeg2" value="{{ploeg2}}" placeholder="ploeg2" />
     <file-upload id="ploeg2av" imgval="{{ploeg2av}}"></file-upload>
   </div>
       <div class="btns" vertical layout center center-justified>
       <div on-tap="{{submit}}">Starten</div>
       </div>
-
-
-  </section>
-  <section>
   </section>
 </core-animated-pages>
 
