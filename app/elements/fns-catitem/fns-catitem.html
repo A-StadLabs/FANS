@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="fns-catitem.css">
     <firebase-element id="gbase" on-data-change="{{handleResponse}}" keys="{{gkeys}}" data="{{gdata}}" log location="https://asl-ranking.firebaseio.com/categories/{{key}}/games/"></firebase-element>
     <div class="catitem" vertical layout center center-justified>
-        <span class="naam" >{{naam}}</span>
+        <span class="naam" data-badge="{{games}}">{{naam}}</span>
   </div>
   </template>
   <script>
@@ -22,7 +22,7 @@
           this.fire('cat-tap', { key: this.key, naam: this.naam })
         },
         handleResponse: function(){
-          // this.games = this.gkeys.length;
+          this.games = this.gkeys.length;
         }
       });
 
