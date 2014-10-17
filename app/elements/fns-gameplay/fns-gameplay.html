@@ -82,7 +82,7 @@
       <div class="btns" self-end horizontal layout center center-justified on-tap="{{postit}}" >toevoegen</div>
       </div>
       <template repeat="{{comm in comments}}" >
-        <div class="comments"><p><time-ago datetime="{{comm.data.time}}" delay="1000"></time-ago></p><img src="{{comm.data.avatar}}" class="avatar" /><p>{{comm.data.nick}}</p><p>{{comm.data.comment}}</p></div>
+        <div class="comments {{ {system: comm.data.nick == 'system'} | tokenList}}"><p><time-ago datetime="{{comm.data.time}}" delay="1000"></time-ago></p><img src="{{comm.data.avatar}}" class="avatar" /><p>{{comm.data.nick}}</p><p>{{comm.data.comment}}</p></div>
       </template>
     </div> 
   </div>
@@ -189,7 +189,7 @@
         // },
 
         handleResponse: function(){
-          this.tekstGrootte();
+          //this.tekstGrootte();
           // console.log('owner: ',this.data.owner);
           var that = this;
           // console.log('user: ',that.globals.values.user.etag); 
