@@ -48,6 +48,8 @@ transform: translate(10px);
 
  .red {
  	color: #0066F5;
+  font-weight: 800;
+  font-size: 14px;
  }
 
  p {
