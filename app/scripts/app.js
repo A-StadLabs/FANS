@@ -8,7 +8,7 @@ var catcher = function(evt) {
         evt.preventDefault();
 };
 
-elm.addEventListener('touchstart', catcher, true);
+//elm.addEventListener('touchstart', catcher, true);
 
   document.addEventListener('polymer-ready', function() {
     // Perform some behaviour

@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/core-selector/core-selector.html">
 <link rel="import" href="../../elements/fans-icons.html">
 <link rel="import" href="../../elements/file-upload/file-upload.html">
 
@@ -9,22 +10,22 @@
       :host {
   display: block;
 }
-core-icon-button[select] {
-  background-color: #0066F5;
-}
-
-file-upload {
-  background-color: #0066F5;
+.selected {
+  color: #0066F5;
 }
 
     </style>
+    <core-selector valueattr="imagesrc" on-core-select="{{iconChosen}}">
+      <core-icon-button icon="fans:ufo" imagesrc="ufo"></core-icon-button>
+      <core-icon-button icon="fans:fire" imagesrc="fire"></core-icon-button>
+      <core-icon-button icon="fans:rock" imagesrc="rock"></core-icon-button>
+      <core-icon-button icon="fans:heart" imagesrc="heart"></core-icon-button>
+      <core-icon-button icon="fans:flash" imagesrc="flash"></core-icon-button>
+      <core-icon-button icon="fans:hero" imagesrc="hero"></core-icon-button>
+    </core-selector>
+
     <file-upload imgval="{{value}}"></file-upload>
-    <core-icon-button class="klasse" icon="fans:ufo"></core-icon-button>
-    <core-icon-button class="klasse" icon="fans:fire"></core-icon-button>
-    <core-icon-button class="klasse" icon="fans:rock"></core-icon-button>
-    <core-icon-button class="klasse" icon="fans:heart"></core-icon-button>
-    <core-icon-button class="klasse" icon="fans:flash"></core-icon-button>
-    <core-icon-button class="klasse" icon="fans:hero"></core-icon-button>
+
   </template>
   <script>
     (function () {
@@ -32,6 +33,9 @@ file-upload {
 
       Polymer({
         // define element prototype here
+        iconChosen: function(e){
+          console.log(e.detail.selected);
+        }
       });
 
     })();
