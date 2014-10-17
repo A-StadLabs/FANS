@@ -1,10 +1,12 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 
 <polymer-element name="file-upload" attributes="imgval">
 
   <template>
 <link rel="stylesheet" href="file-upload.css">
       <input type="file" name="File" id="file" on-change="{{setFiles}}">
+      <core-icon-button icon="add" src="{{imgval}}" on-click="{{selectFile}}"></core-icon-button>
   </template>
   <script>
     (function () {
@@ -22,12 +24,15 @@
           this.imgval = '';
         },
 
+        selectFile: function() {
+        this.$.file.click(); // wow this works?
+      },
+
         setFiles: function(){
           this.fileInput = this.$.file.files[0];
           this.imageType = /image.*/;
           var that = this;
           if (this.fileInput.type.match(this.imageType)) {
-            console.log('das godver een goeie image jong');
             var reader = new FileReader();
             console.log('reader: ', reader);
             reader.onload = function(e) {
