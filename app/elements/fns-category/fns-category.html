@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="fns-category.css">
     <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" location="https://asl-ranking.firebaseio.com/categories/{{cat}}/games"></firebase-element>
     <div vertical layout center stretch>
+              <p class="titleadd">{{titel}}</p>
+
       <div class="btns" stretch>
       <div class="top-btns" on-tap="{{toggleNewgame}}" vertical layout center center-justified > Nieuwe game</div>
       <core-overlay id="collapse" layered backdrop transition="core-transition-center">

@@ -9,7 +9,7 @@ body {
 core-toolbar {
   background: #333333;
   text-align: center;
-  min-height: 140px;
+  height: 80px;
 }
 
 core-toolbar h1 {
@@ -26,32 +26,7 @@ core-toolbar h1 {
 }
 
 
- .titleadd {
-  color: rgba(255,255,255,0.15);
- 	text-transform: uppercase;
-  font-size: 50px; 
-  text-shadow: none;
-  display: block;
-
-/*  transition:All 5s ease;
--webkit-transition:All 5s ease;
--moz-transition:All 5s ease;
--o-transition:All 5s ease;
-
-transform: translate(10px);
--webkit-transform: translate(10px);
--moz-transform: translate(10px);
--o-transform: translate(10px);
--ms-transform: translate(10px);*/
-
- }
-
- .red {
- 	color: #0066F5;
-  font-weight: 800;
-  font-size: 14px;
- }
-
+ 
  p {
  	text-transform: uppercase;
  	color: white;

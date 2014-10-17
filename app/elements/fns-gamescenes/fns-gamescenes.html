@@ -14,6 +14,7 @@
     <core-animated-pages selected="{{scene}}" transitions="slide-from-right">
       <section>
         <div vertical layout center center-justified class="catcontainer">
+          <p class="red">een a-stadlabs experiment</p>
           <template repeat="{{key in keys}}" id="cattemplate">
             <fns-catitem icon="{{data[key].icon}}" naam="{{data[key].naam}}" key="{{key}}" on-cat-tap="{{catSelect}}"></fns-catitem>
           </template>
