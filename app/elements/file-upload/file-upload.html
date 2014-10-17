@@ -6,7 +6,7 @@
   <template>
 <link rel="stylesheet" href="file-upload.css">
       <input type="file" name="File" id="file" on-change="{{setFiles}}">
-      <core-icon-button icon="add" src="{{imgval}}" on-click="{{selectFile}}">Eigen afbeelding</core-icon-button>
+      <core-icon-button icon="add" on-click="{{selectFile}}">Eigen afbeelding</core-icon-button>
   </template>
   <script>
     (function () {
@@ -26,6 +26,7 @@
 
         selectFile: function() {
         this.$.file.click(); // wow this works?
+        this.fire('clicked');
       },
 
         setFiles: function(){
