@@ -3,36 +3,28 @@
 <link rel="import" href="../../elements/fans-icons.html">
 <link rel="import" href="../../elements/file-upload/file-upload.html">
 
-
 <polymer-element name="icon-chooser" attributes="value">
   <template>
     <style>
       :host {
   display: block;
 }
-core-icon-button {
-  background-color: {{kleur2}};
+core-icon-button[select] {
+  background-color: #0066F5;
 }
 
-.klasse /deep/ core-icon[role=img] path {
-  fill: {{kleur}};
-}
-
-.klasse /deep/ core-icon[role=img] polygon {
-  fill: {{kleur}};
+file-upload {
+  background-color: #0066F5;
 }
 
     </style>
-    <core-icon-button icon="fans:ufo" class="klasse"></core-icon-button>
+    <file-upload imgval="{{value}}"></file-upload>
+    <core-icon-button class="klasse" icon="fans:ufo"></core-icon-button>
     <core-icon-button class="klasse" icon="fans:fire"></core-icon-button>
     <core-icon-button class="klasse" icon="fans:rock"></core-icon-button>
     <core-icon-button class="klasse" icon="fans:heart"></core-icon-button>
     <core-icon-button class="klasse" icon="fans:flash"></core-icon-button>
     <core-icon-button class="klasse" icon="fans:hero"></core-icon-button>
-    <file-upload imgval="{{value}}"></file-upload>
-    <p>Kies een voor- en achtergrondkleur</p>
-    <input value="{{kleur}}">
-    <input value="{{kleur2}}">
   </template>
   <script>
     (function () {
