@@ -9,8 +9,8 @@
 <link rel="import" href="../../bower_components/time-ago/src/time-ago.html">
 <link rel="import" href="../../elements/asl-globals/asl-globals.html">
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment-with-locales.min.js"></script>
-<script src="../../vendor/FitText.js-master/fittext.js"></script>
-
+<!-- <script src="../../vendor/FitText.js-master/fittext.js"></script>
+ -->
 
 <polymer-element name="fns-gameplay" attributes="game cat">
 <template>
@@ -51,13 +51,13 @@
             <core-icon-button icon="expand-more" on-tap="{{removePoint1}}" class="removebtn"></core-icon-button>
           </div> 
           <div class="datascore1" on-tap="{{addPoint1}}">{{data.score1}}</div>
-          <img src="{{data.ploeg1av}}">
+          <!-- <img src="{{data.ploeg1av}}"> -->
         </div>
         <div class="streepje2" id="fittext6">-</div>  
 
         <div class="score2" id="fittext2" horizontal layout center>
           <div class="datascore2" on-tap="{{addPoint2}}">{{data.score2}}</div>
-          <img src="{{data.ploeg2av}}">
+          <!-- <img src="{{data.ploeg2av}}"> -->
           <div hidden?="{{isOwner}}">
             <core-icon-button icon="expand-less" on-tap="{{addPoint2}}" class="addbtn"></core-icon-button>
             <core-icon-button icon="expand-more" on-tap="{{removePoint2}}" class="removebtn"></core-icon-button>
@@ -105,7 +105,7 @@
         ready: function(){
           this.pageSelect = 0;
           this.globals = this.$.globals;
-          this.tekstGrootte();
+          //this.tekstGrootte();
         },
 
         terug: function(){
@@ -178,15 +178,15 @@
           that.postLog('Foutje. De nieuwe stand is '+this.data.score1+' - '+this.data.score2+'.'); 
         },
 
-        tekstGrootte: function(){
-          fitText(this.$.fittext, 0.2);
-          fitText(this.$.fittext2, 0.2);
-          fitText(this.$.fittext3, 0.8);
-          fitText(this.$.fittext4, 0.8);
-          fitText(this.$.fittext5, 0.2);
-          fitText(this.$.fittext6, 0.2);
+        // tekstGrootte: function(){
+        //   fitText(this.$.fittext, 0.2);
+        //   fitText(this.$.fittext2, 0.2);
+        //   fitText(this.$.fittext3, 0.8);
+        //   fitText(this.$.fittext4, 0.8);
+        //   fitText(this.$.fittext5, 0.2);
+        //   fitText(this.$.fittext6, 0.2);
 
-        },
+        // },
 
         handleResponse: function(){
           this.tekstGrootte();

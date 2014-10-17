@@ -67,14 +67,14 @@
 }
 
 .score1 {
-		font-size: 40px;
+	font-size: 30vw;
 	width: 44%;
 	text-align: right;
 /*	background-color: blue;
 */}
 
 .score2 {
-		font-size: 40px;
+		font-size: 30vw;
 
 	width: 44%;
 	text-align: left;
