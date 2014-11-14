@@ -7,18 +7,20 @@
 }
 */
 
-.titleadd {
-  color: rgba(255,255,255,0.25);
-  font-weight: 400;
-  font-size: 20px;
-  text-transform: uppercase;
-  margin: 20px 0px 10px 0px;
- }
+
 
  .red {
- 	color: #0066F5;
-  font-weight: 600;
-  font-size: 13px;
+  color: rgba(255,255,255,0.15);
+  font-weight: 400;
+  font-size: 15px;
+  text-transform: uppercase;
   margin: 20px 0px 30px 0px;
 
+
  }
+
+
+fns-catitem {
+	width: 90%;
+	max-width: 600px;
+}

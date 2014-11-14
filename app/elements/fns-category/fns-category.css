@@ -36,3 +36,11 @@ h3 {
 .newbtn {
 	margin-top: 30px;
 }
+
+.titleadd {
+  color: rgba(255,255,255,0.25);
+  font-weight: 400;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 20px 0px 10px 0px;
+ }
