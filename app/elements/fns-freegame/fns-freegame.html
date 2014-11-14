@@ -1,0 +1,101 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/core-overlay/core-overlay.html">
+<link rel="import" href="../../bower_components/core-transition/core-transition-css.html">
+<script src="../../vendor/FitText.js-master/fittext.js"></script>
+
+<polymer-element name="fns-freegame" attributes="gamekey">
+  <template>
+    <link rel="stylesheet" href="fns-freegame.css">
+    <firebase-element id="base" on-data-change="{{handleResponse}}" keys="{{keys}}" data="{{data}}" log location="https://asl-ranking.firebaseio.com/nocatgames/{{gamekey}}/"></firebase-element>
+
+
+    <div horizontal layout>
+      <div class="spacer"></div>
+      <div>up</div>
+      <div flex class="centered" id="fittext">999 - 999</div>
+      <div>up</div>
+      <div class="spacer"></div>
+    </div>
+    <!-- <div horizontal layout center center-justified class="puntengever">
+
+     <div vertical layout center flex>
+      <div horizontal layout center center-justified class="ploegen">
+        <div class="ploeg1" flex id="fittext3">{{data.ploeg1}}</div>
+        <div class="streepje" id="fittext5">vs.</div>
+        <div class="ploeg2" flex id="fittext4">{{data.ploeg2}}</div>      
+      </div>
+
+      <div vertical layout center class="scores" stretch> 
+
+        <div class="score1" id="fittext" horizontal layout center stretch>
+
+          <div class="empty"></div>
+          
+          <div hidden?="{{isOwner}}" start>
+            <core-icon-button icon="expand-less" on-tap="{{addPoint1}}" class="addbtn"></core-icon-button>
+            <core-icon-button icon="expand-more" on-tap="{{removePoint1}}" class="removebtn"></core-icon-button>
+          </div> 
+
+          <div flex>{{data.score1}} - {{data.score2}}</div>
+          <!-- <img src="{{data.ploeg2av}}"> -->
+          <!-- <div hidden?="{{isOwner}}" end-justified>
+            <core-icon-button icon="expand-less" on-tap="{{addPoint2}}" class="addbtn"></core-icon-button>
+            <core-icon-button icon="expand-more" on-tap="{{removePoint2}}" class="removebtn"></core-icon-button>
+          </div> 
+
+          <div class="empty"></div>
+
+        </div>
+      </div>
+    </div>
+  </div> --> 
+    <core-overlay id="addscores" layered backdrop transition="core-transition-center">
+        <input type="number" value="addploeg1" hidden id="addploeg1">
+    </core-overlay>
+  </template>
+  <script>
+    (function () {
+      'use strict';
+
+
+      Polymer({
+        // define element prototype here
+        handleResponse: function(){
+          var that = this;
+          console.log(this.keys, this.data);
+          fitText(that.$.fittext, 0.5);
+        },
+
+        addscore1: function(){
+          this.$.addscores.toggle();
+        },
+
+        addPoint1: function(){
+          var that = this;
+          this.data.score1++; 
+          that.postLog('Punt voor ploeg 1. De stand is '+this.data.score1+' - '+this.data.score2+'.');
+        },
+
+        addPoint2: function(){
+          var that = this;
+          this.data.score2++;
+          that.postLog('Punt voor ploeg 2. De stand is '+this.data.score1+' - '+this.data.score2+'.'); 
+        },
+
+        removePoint1: function(){
+          var that = this;
+          this.data.score1--; 
+          that.postLog('Foutje. De nieuwe stand is '+this.data.score1+' - '+this.data.score2+'.');
+        },
+
+        removePoint2: function(){
+          var that = this;
+          this.data.score2--;
+          that.postLog('Foutje. De nieuwe stand is '+this.data.score1+' - '+this.data.score2+'.'); 
+        },
+      });
+
+    })();
+  </script>
+</polymer-element>
